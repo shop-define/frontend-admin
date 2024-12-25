@@ -1,7 +1,10 @@
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
-import { ConfigProvider } from 'antd'
+import { Footer } from 'antd/es/modal/shared'
+import { Header } from 'antd/es/layout/layout'
+import { ConfigProvider, Layout } from 'antd'
 import Main from './screens/main/main.tsx'
+import Good from './screens/good/good.tsx'
 
 import S from './app.module.css'
 
@@ -9,11 +12,15 @@ import S from './app.module.css'
 const queryClient = new QueryClient()
 
 const ConfigProviderWrap = () => {
-  // Тут можно прокинуть стор, пользователя, к примеру
+  // Тут можно прокинуть стор пользователя, к примеру
   return (
-    <div className={S.root}>
-      <Outlet />
-    </div>
+    <Layout>
+      <Header style={{ borderBottom: '2px #f5f5f5 solid' }}></Header>
+      <div className={S.root}>
+        <Outlet />
+      </div>
+      <Footer />
+    </Layout>
   )
 }
 
@@ -25,6 +32,10 @@ const router = createBrowserRouter([
         path: '/',
         element: <Main />,
       },
+      {
+        path: '/good/:id',
+        element: <Good />,
+      },
     ],
   },
 ])
@@ -35,6 +46,12 @@ function App() {
       theme={{
         token: {
           colorText: '#8f9298',
+        },
+        components: {
+          Layout: {
+            headerBg: '#ffffff',
+            bodyBg: '#ffffff',
+          },
         },
       }}
     >

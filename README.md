@@ -37,7 +37,7 @@ docker-compose up --build
 # Генерация типов
 
 ```sh
-npx openapi-typescript https://{сюда вставить url api}/api/openapi --output ./src/domain/api/types/api-types.ts
+npx openapi-typescript http://127.0.0.1:3003/api/docs/json --output ./src/api/types/api-types.ts
 ```
 
 # Разработка
