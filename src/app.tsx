@@ -1,7 +1,6 @@
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
-import { Footer } from 'antd/es/modal/shared'
-import { Header } from 'antd/es/layout/layout'
+import { Content, Header, Footer } from 'antd/es/layout/layout'
 import { ConfigProvider, Layout } from 'antd'
 import Main from './screens/main/main.tsx'
 import Good from './screens/good/good.tsx'
@@ -14,11 +13,11 @@ const queryClient = new QueryClient()
 const ConfigProviderWrap = () => {
   // Тут можно прокинуть стор пользователя, к примеру
   return (
-    <Layout>
-      <Header style={{ borderBottom: '2px #f5f5f5 solid' }}></Header>
-      <div className={S.root}>
+    <Layout className={S.root}>
+      <Header className={S.header}></Header>
+      <Content className={S.content}>
         <Outlet />
-      </div>
+      </Content>
       <Footer />
     </Layout>
   )

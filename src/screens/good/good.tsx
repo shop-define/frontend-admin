@@ -42,7 +42,7 @@ function Good() {
             <Title level={2}>Добавление товара</Title>
             <Divider style={{ borderWidth: 2 }} />
           </Flex>
-          <Row gutter={{ lg: 32 }} style={{ width: '100%' }}>
+          <Row gutter={{ lg: 32 }} style={{ width: '100%', display: 'inline-flex' }}>
             <Col span={16}>
               <Title level={3}>Товар</Title>
               <Form.Item label='Название' name='title'>
@@ -67,8 +67,12 @@ function Good() {
                   </Form.Item>
                 </Col>
               </Row>
+              <Title level={3}>Количество</Title>
+              <Form.Item label='Количество' name='count'>
+                <Input type='number' />
+              </Form.Item>
             </Col>
-            <Col span={8} style={{ height: 760 }}>
+            <Col span={8} style={{ display: 'inline-flex', flexDirection: 'column' }}>
               <Title level={3}>Характеристики товара</Title>
               <Form.Item label='Категория' name='categoryId'>
                 <Select>
@@ -88,8 +92,7 @@ function Good() {
                   <Radio value={1}>Премиум товар</Radio>
                 </Radio.Group>
               </Form.Item>
-              <div style={{ height: '25%' }}></div>
-              <Form.Item>
+              <Form.Item style={{ marginTop: 'auto' }}>
                 <Button size='large' type='primary' block>
                   Опубликовать
                 </Button>
