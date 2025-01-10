@@ -1,14 +1,16 @@
-import { Button, Col, Divider, Flex, Form, Input, message, Radio, Row, Select, Upload } from 'antd'
+import { Button, Col, Divider, Flex, Form, Input, message, Radio, Row, Select } from 'antd'
 import Title from 'antd/lib/typography/Title'
 import { useEffect, useState } from 'react'
-import { IMAGE_URL } from '../../constants/constants.ts'
-import { goodApi, GoodCategoriesListResponse, goodCategoryApi, GoodResponse } from '../../api/data'
 import { useParams } from 'react-router-dom'
+import { goodsApi, GoodCategoriesListResponse, goodCategoryApi } from '../../api/data'
+import { GoodResponse } from '../../api/data/good.ts'
+import UploadButton from '../../components/upload-button/upload-button.tsx'
 
 function Good() {
   const { id } = useParams()
+  // @ts-expect-error fut
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [messageApi, contextHolder] = message.useMessage()
-  const [imageUrl, setImageUrl] = useState<string>()
   const [categories, setCategories] = useState<GoodCategoriesListResponse>([])
   const [form] = Form.useForm<GoodResponse>()
 
@@ -18,7 +20,7 @@ function Good() {
 
   useEffect(() => {
     if (id) {
-      goodApi
+      goodsApi
         .getGoodById(id)
         .then((data) => {
           form.setFieldsValue(data)
@@ -27,17 +29,6 @@ function Good() {
     }
   }, [form, form.setFieldsValue, id])
 
-  async function uploadRequest(/*{ file }: { file: string | Blob | RcFile; filename?: string }*/) {
-    try {
-      const url = '' //await upload(file as File)
-      if (url) setImageUrl(url)
-    } catch (e) {
-      messageApi.open({
-        type: 'error',
-        content: 'ошибка загрузки фото',
-      })
-    }
-  }
   return (
     <>
       {contextHolder}
@@ -60,15 +51,8 @@ function Good() {
               <Form.Item label='Описание' name='description'>
                 <Input.TextArea style={{ height: 174 }} />
               </Form.Item>
-              <Form.Item label='Медиа'>
-                <Upload
-                  listType='picture-card'
-                  showUploadList={false}
-                  customRequest={uploadRequest}
-                  style={{ border: 'solid', height: 192 }}
-                >
-                  {imageUrl ? <img src={`${IMAGE_URL}${imageUrl}`} alt='avatar' style={{ width: '100%' }} /> : 'Фото'}
-                </Upload>
+              <Form.Item label='Медиа' name='images'>
+                <UploadButton />
               </Form.Item>
               <Title level={3}>Цена</Title>
               <Row gutter={{ lg: 20 }}>
@@ -78,7 +62,7 @@ function Good() {
                   </Form.Item>
                 </Col>
                 <Col span={12}>
-                  <Form.Item label='Цена со скидкой'>
+                  <Form.Item label='Цена со скидкой' name='priceWithDisc'>
                     <Input />
                   </Form.Item>
                 </Col>
