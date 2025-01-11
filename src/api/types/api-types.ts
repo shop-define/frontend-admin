@@ -600,17 +600,23 @@ export interface paths {
               /** Good */
               data: {
                 id: string
+                status: 'draft' | 'published'
                 title: string
+                /** @default  */
                 description: string
                 price: number
+                /** @default null */
+                priceWithDisc: null | number
+                /** @default 0 */
                 count: number
+                /** @default [] */
                 images: string[]
                 /** @default null */
                 categoryId: null | number
                 /** @default null */
                 brandId: null | string
-                modifiedName: string
-                articleNumber: string
+                modifiedName?: string
+                articleNumber?: string
               }
             }
           }
@@ -655,17 +661,23 @@ export interface paths {
               /** Good */
               data: {
                 id: string
+                status: 'draft' | 'published'
                 title: string
+                /** @default  */
                 description: string
                 price: number
+                /** @default null */
+                priceWithDisc: null | number
+                /** @default 0 */
                 count: number
+                /** @default [] */
                 images: string[]
                 /** @default null */
                 categoryId: null | number
                 /** @default null */
                 brandId: null | string
-                modifiedName: string
-                articleNumber: string
+                modifiedName?: string
+                articleNumber?: string
               }
             }
           }
@@ -714,10 +726,16 @@ export interface paths {
       requestBody?: {
         content: {
           'application/json': {
+            status?: 'draft' | 'published'
             title?: string
+            /** @default  */
             description?: string
             price?: number
+            /** @default null */
+            priceWithDisc?: null | number
+            /** @default 0 */
             count?: number
+            /** @default [] */
             images?: string[]
             /** @default null */
             categoryId?: null | number
@@ -740,17 +758,23 @@ export interface paths {
               /** Good */
               data: {
                 id: string
+                status: 'draft' | 'published'
                 title: string
+                /** @default  */
                 description: string
                 price: number
+                /** @default null */
+                priceWithDisc: null | number
+                /** @default 0 */
                 count: number
+                /** @default [] */
                 images: string[]
                 /** @default null */
                 categoryId: null | number
                 /** @default null */
                 brandId: null | string
-                modifiedName: string
-                articleNumber: string
+                modifiedName?: string
+                articleNumber?: string
               }
             }
           }
@@ -815,17 +839,23 @@ export interface paths {
               status: 'ok' | 'error'
               data: {
                 id: string
+                status: 'draft' | 'published'
                 title: string
+                /** @default  */
                 description: string
                 price: number
+                /** @default null */
+                priceWithDisc: null | number
+                /** @default 0 */
                 count: number
+                /** @default [] */
                 images: string[]
                 /** @default null */
                 categoryId: null | number
                 /** @default null */
                 brandId: null | string
-                modifiedName: string
-                articleNumber: string
+                modifiedName?: string
+                articleNumber?: string
               }[]
             }
           }
@@ -883,17 +913,23 @@ export interface paths {
               status: 'ok' | 'error'
               data: {
                 id: string
+                status: 'draft' | 'published'
                 title: string
+                /** @default  */
                 description: string
                 price: number
+                /** @default null */
+                priceWithDisc: null | number
+                /** @default 0 */
                 count: number
+                /** @default [] */
                 images: string[]
                 /** @default null */
                 categoryId: null | number
                 /** @default null */
                 brandId: null | string
-                modifiedName: string
-                articleNumber: string
+                modifiedName?: string
+                articleNumber?: string
               }[]
               total: number
             }
@@ -926,17 +962,23 @@ export interface paths {
       requestBody: {
         content: {
           'application/json': {
+            status: 'draft' | 'published'
             title: string
+            /** @default  */
             description: string
             price: number
+            /** @default null */
+            priceWithDisc?: null | number
+            /** @default 0 */
             count: number
+            /** @default [] */
             images: string[]
             /** @default null */
             categoryId?: null | number
             /** @default null */
             brandId?: null | string
-            modifiedName: string
-            articleNumber: string
+            modifiedName?: string
+            articleNumber?: string
           }
         }
       }
@@ -952,17 +994,23 @@ export interface paths {
               /** Good */
               data: {
                 id: string
+                status: 'draft' | 'published'
                 title: string
+                /** @default  */
                 description: string
                 price: number
+                /** @default null */
+                priceWithDisc: null | number
+                /** @default 0 */
                 count: number
+                /** @default [] */
                 images: string[]
                 /** @default null */
                 categoryId: null | number
                 /** @default null */
                 brandId: null | string
-                modifiedName: string
-                articleNumber: string
+                modifiedName?: string
+                articleNumber?: string
               }
             }
           }
@@ -2999,6 +3047,598 @@ export interface paths {
     options?: never
     head?: never
     patch?: never
+    trace?: never
+  }
+  '/api/news/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    get: {
+      parameters: {
+        query?: never
+        header?: never
+        path: {
+          id: string
+        }
+        cookie?: never
+      }
+      requestBody?: never
+      responses: {
+        /** @description Default Response */
+        200: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              status: 'ok' | 'error'
+              /** News */
+              data: {
+                id: string
+                title: string
+                htmlDocumentName: string
+                htmlContent: string
+                images: string[]
+                status: 'draft' | 'published'
+                isPrimary: boolean
+                publishedAt: string | null
+                createdAt: string
+                updatedAt: string
+              }
+            }
+          }
+        }
+        /** @description Default Response */
+        404: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              status: 'ok' | 'error'
+              data: {
+                message: string
+              }
+            }
+          }
+        }
+      }
+    }
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/news/': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    get: {
+      parameters: {
+        query?: {
+          limit?: number
+          offset?: number
+        }
+        header?: never
+        path?: never
+        cookie?: never
+      }
+      requestBody?: never
+      responses: {
+        /** @description Default Response */
+        200: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              status: 'ok' | 'error'
+              data: {
+                id: string
+                title: string
+                htmlDocumentName: string
+                images: string[]
+                status: 'draft' | 'published'
+                isPrimary: boolean
+                publishedAt: string | null
+                createdAt: string
+                updatedAt: string
+              }[]
+              total: number
+            }
+          }
+        }
+        /** @description Default Response */
+        404: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              status: 'ok' | 'error'
+              data: {
+                message: string
+              }
+            }
+          }
+        }
+      }
+    }
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/private/news/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    get: {
+      parameters: {
+        query?: never
+        header?: never
+        path: {
+          id: string
+        }
+        cookie?: never
+      }
+      requestBody?: never
+      responses: {
+        /** @description Default Response */
+        200: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              status: 'ok' | 'error'
+              /** News */
+              data: {
+                id: string
+                title: string
+                htmlDocumentName: string
+                htmlContent: string
+                images: string[]
+                status: 'draft' | 'published'
+                isPrimary: boolean
+                publishedAt: string | null
+                createdAt: string
+                updatedAt: string
+              }
+            }
+          }
+        }
+        /** @description Default Response */
+        404: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              status: 'ok' | 'error'
+              data: {
+                message: string
+              }
+            }
+          }
+        }
+      }
+    }
+    put?: never
+    post?: never
+    delete: {
+      parameters: {
+        query?: never
+        header?: never
+        path: {
+          id: string
+        }
+        cookie?: never
+      }
+      requestBody?: never
+      responses: {
+        /** @description Default Response */
+        200: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              status: 'ok' | 'error'
+              /** News */
+              data: {
+                id: string
+                title: string
+                htmlDocumentName: string
+                images: string[]
+                status: 'draft' | 'published'
+                isPrimary: boolean
+                publishedAt: string | null
+                createdAt: string
+                updatedAt: string
+              }
+            }
+          }
+        }
+        /** @description Default Response */
+        403: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              status: 'ok' | 'error'
+              data: {
+                message: string
+              }
+            }
+          }
+        }
+        /** @description Default Response */
+        409: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              status: 'ok' | 'error'
+              data: {
+                message: string
+              }
+            }
+          }
+        }
+      }
+    }
+    options?: never
+    head?: never
+    patch: {
+      parameters: {
+        query?: never
+        header?: never
+        path: {
+          id: string
+        }
+        cookie?: never
+      }
+      requestBody?: {
+        content: {
+          'application/json': {
+            title?: string
+            htmlDocumentName?: string
+            htmlContent?: string
+            images?: string[]
+            status?: 'draft' | 'published'
+            isPrimary?: boolean
+          }
+        }
+      }
+      responses: {
+        /** @description Default Response */
+        200: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              status: 'ok' | 'error'
+              /** News */
+              data: {
+                id: string
+                title: string
+                htmlDocumentName: string
+                htmlContent: string
+                images: string[]
+                status: 'draft' | 'published'
+                isPrimary: boolean
+                publishedAt: string | null
+                createdAt: string
+                updatedAt: string
+              }
+            }
+          }
+        }
+        /** @description Default Response */
+        403: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              status: 'ok' | 'error'
+              data: {
+                message: string
+              }
+            }
+          }
+        }
+        /** @description Default Response */
+        409: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              status: 'ok' | 'error'
+              data: {
+                message: string
+              }
+            }
+          }
+        }
+      }
+    }
+    trace?: never
+  }
+  '/api/private/news/': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    get: {
+      parameters: {
+        query?: {
+          limit?: number
+          offset?: number
+        }
+        header?: never
+        path?: never
+        cookie?: never
+      }
+      requestBody?: never
+      responses: {
+        /** @description Default Response */
+        200: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              status: 'ok' | 'error'
+              data: {
+                id: string
+                title: string
+                htmlDocumentName: string
+                images: string[]
+                status: 'draft' | 'published'
+                isPrimary: boolean
+                publishedAt: string | null
+                createdAt: string
+                updatedAt: string
+              }[]
+              total: number
+            }
+          }
+        }
+        /** @description Default Response */
+        404: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              status: 'ok' | 'error'
+              data: {
+                message: string
+              }
+            }
+          }
+        }
+      }
+    }
+    put?: never
+    post: {
+      parameters: {
+        query?: never
+        header?: never
+        path?: never
+        cookie?: never
+      }
+      requestBody: {
+        content: {
+          'application/json': {
+            title: string
+            htmlDocumentName: string
+            htmlContent: string
+            images: string[]
+            status: 'draft' | 'published'
+            isPrimary: boolean
+          }
+        }
+      }
+      responses: {
+        /** @description Default Response */
+        200: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              status: 'ok' | 'error'
+              /** News */
+              data: {
+                id: string
+                title: string
+                htmlDocumentName: string
+                htmlContent: string
+                images: string[]
+                status: 'draft' | 'published'
+                isPrimary: boolean
+                publishedAt: string | null
+                createdAt: string
+                updatedAt: string
+              }
+            }
+          }
+        }
+        /** @description Default Response */
+        403: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              status: 'ok' | 'error'
+              data: {
+                message: string
+              }
+            }
+          }
+        }
+        /** @description Default Response */
+        409: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              status: 'ok' | 'error'
+              data: {
+                message: string
+              }
+            }
+          }
+        }
+      }
+    }
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/settings/': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    get: {
+      parameters: {
+        query?: never
+        header?: never
+        path?: never
+        cookie?: never
+      }
+      requestBody?: never
+      responses: {
+        /** @description Default Response */
+        200: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              status: 'ok' | 'error'
+              /** Settings */
+              data: {
+                title: string
+                logo: string
+              }
+            }
+          }
+        }
+        /** @description Default Response */
+        404: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              status: 'ok' | 'error'
+              data: {
+                message: string
+              }
+            }
+          }
+        }
+      }
+    }
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch: {
+      parameters: {
+        query?: never
+        header?: never
+        path?: never
+        cookie?: never
+      }
+      requestBody?: {
+        content: {
+          'application/json': {
+            title?: string
+            logo?: string
+          }
+        }
+      }
+      responses: {
+        /** @description Default Response */
+        200: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              status: 'ok' | 'error'
+              /** Settings */
+              data: {
+                title: string
+                logo: string
+              }
+            }
+          }
+        }
+        /** @description Default Response */
+        403: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              status: 'ok' | 'error'
+              data: {
+                message: string
+              }
+            }
+          }
+        }
+        /** @description Default Response */
+        409: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              status: 'ok' | 'error'
+              data: {
+                message: string
+              }
+            }
+          }
+        }
+      }
+    }
     trace?: never
   }
 }

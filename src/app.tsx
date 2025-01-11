@@ -47,6 +47,16 @@ function App() {
           colorText: '#8f9298',
         },
         components: {
+          Input: {
+            controlHeight: 44,
+            paddingContentVertical: 12,
+          },
+          Button: {
+            controlHeightLG: 44,
+          },
+          Select: {
+            controlHeight: 44,
+          },
           Layout: {
             headerBg: '#ffffff',
             bodyBg: '#ffffff',

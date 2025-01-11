@@ -11,6 +11,37 @@ async function getGoodById(id: GoodTypes['get']['parameters']['path']['id']) {
   return fetchWrapper.get<GoodResponse>(`${apiUrl}/${id}`)
 }
 
+async function createGood(
+  good: NonNullable<paths['/api/good/']['post']['requestBody']>['content']['application/json'],
+) {
+  return fetchWrapper.post<paths['/api/good/']['post']['responses']['200']['content']['application/json']['data']>(
+    `${apiUrl}`,
+    good,
+    true,
+  )
+}
+
+async function updateGoodById(
+  id: GoodTypes['patch']['parameters']['path']['id'],
+  good: NonNullable<GoodTypes['patch']['requestBody']>['content']['application/json'],
+) {
+  return fetchWrapper.patch<GoodTypes['patch']['responses']['200']['content']['application/json']['data']>(
+    `${apiUrl}/${id}`,
+    good,
+    true,
+  )
+}
+
+async function deleteGoodById(id: GoodTypes['delete']['parameters']['path']['id']) {
+  return fetchWrapper.delete<GoodTypes['delete']['responses']['200']['content']['application/json']['data']>(
+    `${apiUrl}/${id}`,
+    true,
+  )
+}
+
 export const goodsApi = {
   getGoodById,
+  createGood,
+  updateGoodById,
+  deleteGoodById,
 }
