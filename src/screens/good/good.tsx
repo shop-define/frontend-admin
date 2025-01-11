@@ -121,11 +121,7 @@ function Good() {
       >
         <Title level={2}>Вы действительно хотите удалить товар?</Title>
       </Modal>
-      <Form
-        form={form}
-        layout={'vertical'}
-        style={{ maxWidth: 1220, width: '100%', marginLeft: 'auto', marginRight: 'auto' }}
-      >
+      <Form form={form} layout={'vertical'}>
         <Flex vertical>
           <Flex vertical>
             <Title level={2}>{id === 'new' ? 'Добавление товара' : 'Редактировать товар'}</Title>
