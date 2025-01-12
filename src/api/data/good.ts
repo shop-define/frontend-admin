@@ -7,8 +7,32 @@ const apiUrl = `${API_URL}/good`
 type GoodTypes = paths['/api/good/{id}']
 export type GoodResponse = GoodTypes['get']['responses']['200']['content']['application/json']['data']
 
-async function getGoodById(id: GoodTypes['get']['parameters']['path']['id']) {
-  return fetchWrapper.get<GoodResponse>(`${apiUrl}/${id}`)
+async function getGoodById(id: paths['/api/private/good/{id}']['get']['parameters']['path']['id']) {
+  return fetchWrapper.get<GoodResponse>(`${API_URL}/private/good/${id}`, { isAuth: true })
+}
+
+export type GoodSearchResponse = paths['/api/private/good/']['get']['responses']['200']['content']['application/json']
+
+async function getGoods({
+  limit = 100,
+  offset = 0,
+  search,
+  sort,
+}: paths['/api/private/good/']['get']['parameters']['query'] = {}) {
+  const params = new URLSearchParams()
+  params.set('limit', limit?.toString())
+  params.set('offset', offset?.toString())
+  if (search) {
+    params.set('search', search?.toString())
+  }
+  if (sort) {
+    params.set('sort', sort?.toString())
+  }
+
+  return fetchWrapper.get<GoodSearchResponse>(`${API_URL}/private/good/?${params}`, {
+    isFullResponse: true,
+    isAuth: true,
+  })
 }
 
 async function createGood(
@@ -41,6 +65,7 @@ async function deleteGoodById(id: GoodTypes['delete']['parameters']['path']['id'
 
 export const goodsApi = {
   getGoodById,
+  getGoods,
   createGood,
   updateGoodById,
   deleteGoodById,

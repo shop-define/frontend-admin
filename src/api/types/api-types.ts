@@ -27,13 +27,14 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 /** User */
                 profile: {
                   id: string
                   email: string
-                  roles: ('seller' | 'customer' | 'admin')[]
+                  roles: ('user' | 'admin' | 'seller')[]
                 }
               }
             }
@@ -76,6 +77,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** IRefreshTokenResponse */
               data: {
@@ -91,6 +93,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -138,6 +141,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: null
             }
@@ -150,6 +154,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -198,6 +203,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** ILoginConfirmResponse */
               data: {
@@ -206,7 +212,7 @@ export interface paths {
                 profile: {
                   id: string
                   email: string
-                  roles: ('seller' | 'customer' | 'admin')[]
+                  roles: ('user' | 'admin' | 'seller')[]
                 }
               }
             }
@@ -219,6 +225,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -233,6 +240,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -273,6 +281,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** GoodCategory */
               data: {
@@ -293,6 +302,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -322,6 +332,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** GoodCategory */
               data: {
@@ -342,6 +353,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -356,6 +368,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -395,6 +408,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** GoodCategory */
               data: {
@@ -415,6 +429,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -429,6 +444,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -466,6 +482,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 id: number
@@ -486,6 +503,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -522,6 +540,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** GoodCategory */
               data: {
@@ -542,6 +561,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -556,6 +576,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -596,6 +617,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** Good */
               data: {
@@ -628,6 +650,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -657,6 +680,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** Good */
               data: {
@@ -689,6 +713,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -703,6 +728,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -754,6 +780,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** Good */
               data: {
@@ -786,6 +813,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -800,6 +828,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -836,6 +865,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 id: string
@@ -867,6 +897,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -896,6 +927,8 @@ export interface paths {
         query?: {
           limit?: number
           offset?: number
+          search?: string
+          sort?: 'date' | 'date_ask' | 'count' | 'count_ask' | 'price' | 'price_ask'
         }
         header?: never
         path?: never
@@ -910,6 +943,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 id: string
@@ -942,6 +976,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -990,6 +1025,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** Good */
               data: {
@@ -1022,6 +1058,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -1036,6 +1073,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -1045,6 +1083,241 @@ export interface paths {
         }
       }
     }
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/private/good/': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    get: {
+      parameters: {
+        query?: {
+          limit?: number
+          offset?: number
+          search?: string
+          sort?: 'date' | 'date_ask' | 'count' | 'count_ask' | 'price' | 'price_ask' | 'published' | 'draft'
+        }
+        header?: never
+        path?: never
+        cookie?: never
+      }
+      requestBody?: never
+      responses: {
+        /** @description Default Response */
+        200: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              /** @enum {string} */
+              status: 'ok' | 'error'
+              data: ({
+                id: string
+                status: 'draft' | 'published'
+                title: string
+                /** @default  */
+                description: string
+                price: number
+                /** @default null */
+                priceWithDisc: null | number
+                /** @default 0 */
+                count: number
+                /** @default [] */
+                images: string[]
+                /** @default null */
+                categoryId: null | number
+                /** @default null */
+                brandId: null | string
+                modifiedName?: string
+                articleNumber?: string
+              } & {
+                _count: {
+                  BasketItem: number
+                  FavoriteItem: number
+                }
+              })[]
+              total: number
+            }
+          }
+        }
+        /** @description Default Response */
+        404: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              /** @enum {string} */
+              status: 'ok' | 'error'
+              data: {
+                message: string
+              }
+            }
+          }
+        }
+      }
+    }
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/private/good/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    get: {
+      parameters: {
+        query?: never
+        header?: never
+        path: {
+          id: string
+        }
+        cookie?: never
+      }
+      requestBody?: never
+      responses: {
+        /** @description Default Response */
+        200: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              /** @enum {string} */
+              status: 'ok' | 'error'
+              /** Good */
+              data: {
+                id: string
+                status: 'draft' | 'published'
+                title: string
+                /** @default  */
+                description: string
+                price: number
+                /** @default null */
+                priceWithDisc: null | number
+                /** @default 0 */
+                count: number
+                /** @default [] */
+                images: string[]
+                /** @default null */
+                categoryId: null | number
+                /** @default null */
+                brandId: null | string
+                modifiedName?: string
+                articleNumber?: string
+              }
+            }
+          }
+        }
+        /** @description Default Response */
+        404: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              /** @enum {string} */
+              status: 'ok' | 'error'
+              data: {
+                message: string
+              }
+            }
+          }
+        }
+      }
+    }
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/private/good/{id}/group': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    get: {
+      parameters: {
+        query?: never
+        header?: never
+        path: {
+          id: string
+        }
+        cookie?: never
+      }
+      requestBody?: never
+      responses: {
+        /** @description Default Response */
+        200: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              /** @enum {string} */
+              status: 'ok' | 'error'
+              data: {
+                id: string
+                status: 'draft' | 'published'
+                title: string
+                /** @default  */
+                description: string
+                price: number
+                /** @default null */
+                priceWithDisc: null | number
+                /** @default 0 */
+                count: number
+                /** @default [] */
+                images: string[]
+                /** @default null */
+                categoryId: null | number
+                /** @default null */
+                brandId: null | string
+                modifiedName?: string
+                articleNumber?: string
+              }[]
+            }
+          }
+        }
+        /** @description Default Response */
+        404: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              /** @enum {string} */
+              status: 'ok' | 'error'
+              data: {
+                message: string
+              }
+            }
+          }
+        }
+      }
+    }
+    put?: never
+    post?: never
     delete?: never
     options?: never
     head?: never
@@ -1076,6 +1349,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: boolean
             }
@@ -1088,6 +1362,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -1116,6 +1391,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: boolean
             }
@@ -1128,6 +1404,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -1142,6 +1419,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -1169,6 +1447,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: boolean
             }
@@ -1181,6 +1460,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -1195,6 +1475,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -1235,6 +1516,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: string[]
               total: number
@@ -1248,6 +1530,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -1290,6 +1573,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** Basket */
               data: {
@@ -1306,6 +1590,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -1340,6 +1625,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** Basket */
               data: {
@@ -1356,6 +1642,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -1370,6 +1657,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -1397,6 +1685,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** Basket */
               data: {
@@ -1413,6 +1702,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -1427,6 +1717,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -1467,6 +1758,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 goodId: string
@@ -1483,6 +1775,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -1525,6 +1818,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** Brand */
               data: {
@@ -1543,6 +1837,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -1572,6 +1867,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** Brand */
               data: {
@@ -1590,6 +1886,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -1604,6 +1901,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -1641,6 +1939,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** Brand */
               data: {
@@ -1659,6 +1958,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -1673,6 +1973,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -1710,6 +2011,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 id: string
@@ -1728,6 +2030,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -1762,6 +2065,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** Brand */
               data: {
@@ -1780,6 +2084,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -1794,6 +2099,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -1841,6 +2147,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** Image */
               data: {
@@ -1856,6 +2163,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -1870,6 +2178,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -1913,6 +2222,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** Image */
               data: {
@@ -1928,6 +2238,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -1942,6 +2253,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -1981,6 +2293,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** DeliveryMethod */
               data: {
@@ -1999,6 +2312,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -2028,6 +2342,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** DeliveryMethod */
               data: {
@@ -2046,6 +2361,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -2060,6 +2376,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -2097,6 +2414,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** DeliveryMethod */
               data: {
@@ -2115,6 +2433,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -2129,6 +2448,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -2166,6 +2486,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 id: string
@@ -2184,6 +2505,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -2218,6 +2540,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** DeliveryMethod */
               data: {
@@ -2236,6 +2559,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -2250,6 +2574,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -2290,6 +2615,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** DeliveryMethod */
               data: {
@@ -2308,6 +2634,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -2337,6 +2664,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** DeliveryMethod */
               data: {
@@ -2355,6 +2683,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -2369,6 +2698,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -2406,6 +2736,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** DeliveryMethod */
               data: {
@@ -2424,6 +2755,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -2438,6 +2770,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -2475,6 +2808,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 id: string
@@ -2493,6 +2827,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -2527,6 +2862,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** DeliveryMethod */
               data: {
@@ -2545,6 +2881,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -2559,6 +2896,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -2599,6 +2937,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** Transaction */
               data: {
@@ -2620,6 +2959,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -2661,6 +3001,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** Transaction */
               data: {
@@ -2682,6 +3023,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -2696,6 +3038,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -2733,6 +3076,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 id: string
@@ -2754,6 +3098,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -2796,6 +3141,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** Checkout */
               data: {
@@ -2825,6 +3171,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -2868,6 +3215,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 id: string
@@ -2897,6 +3245,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -2934,6 +3283,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** Checkout */
               data: {
@@ -2963,6 +3313,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -2977,6 +3328,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -3015,6 +3367,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** Recipient */
               data: {
@@ -3032,6 +3385,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -3074,6 +3428,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** News */
               data: {
@@ -3098,6 +3453,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -3141,6 +3497,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 id: string
@@ -3164,6 +3521,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -3206,6 +3564,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** News */
               data: {
@@ -3230,6 +3589,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -3259,6 +3619,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** News */
               data: {
@@ -3282,6 +3643,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -3296,6 +3658,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -3336,6 +3699,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** News */
               data: {
@@ -3360,6 +3724,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -3374,6 +3739,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -3411,6 +3777,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 id: string
@@ -3434,6 +3801,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -3471,6 +3839,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** News */
               data: {
@@ -3495,6 +3864,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -3509,6 +3879,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -3547,6 +3918,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** Settings */
               data: {
@@ -3563,6 +3935,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -3600,6 +3973,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               /** Settings */
               data: {
@@ -3616,6 +3990,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string
@@ -3630,6 +4005,7 @@ export interface paths {
           }
           content: {
             'application/json': {
+              /** @enum {string} */
               status: 'ok' | 'error'
               data: {
                 message: string

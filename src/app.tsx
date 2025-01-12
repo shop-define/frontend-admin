@@ -4,6 +4,7 @@ import { Content, Header, Footer } from 'antd/es/layout/layout'
 import { ConfigProvider, Layout } from 'antd'
 import Main from './screens/main/main.tsx'
 import Good from './screens/good/good.tsx'
+import Goods from './screens/goods/goods.tsx'
 
 import S from './app.module.css'
 
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
         path: '/good/:id',
         element: <Good />,
       },
+      {
+        path: '/good',
+        element: <Goods />,
+      },
     ],
   },
 ])
@@ -44,19 +49,11 @@ function App() {
     <ConfigProvider
       theme={{
         token: {
-          colorText: '#8f9298',
+          colorTextPlaceholder: '#8f9298',
+          controlHeightLG: 44,
+          fontSize: 16,
         },
         components: {
-          Input: {
-            controlHeight: 44,
-            paddingContentVertical: 12,
-          },
-          Button: {
-            controlHeightLG: 44,
-          },
-          Select: {
-            controlHeight: 44,
-          },
           Layout: {
             headerBg: '#ffffff',
             bodyBg: '#ffffff',

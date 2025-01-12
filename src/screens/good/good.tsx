@@ -5,18 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { goodsApi, GoodCategoriesListResponse, goodCategoryApi } from '../../api/data'
 import { GoodResponse } from '../../api/data/good.ts'
 import UploadButton from '../../components/upload-button/upload-button.tsx'
-
-function CustomDivider() {
-  return (
-    <Divider
-      style={{
-        marginTop: 0,
-        marginBottom: 20,
-        borderWidth: 2,
-      }}
-    />
-  )
-}
+import CustomDivider from '../../components/custom-divider/custom-divider.tsx'
 
 function Good() {
   const { id } = useParams()
@@ -140,7 +129,7 @@ function Good() {
                   },
                 ]}
               >
-                <Input />
+                <Input size='large' />
               </Form.Item>
               <Form.Item label='Описание' name='description'>
                 <Input.TextArea style={{ height: 174 }} />
@@ -161,12 +150,12 @@ function Good() {
                       },
                     ]}
                   >
-                    <Input />
+                    <Input size='large' />
                   </Form.Item>
                 </Col>
                 <Col span={12}>
                   <Form.Item label='Цена со скидкой' name='priceWithDisc'>
-                    <Input />
+                    <Input size='large' />
                   </Form.Item>
                 </Col>
               </Row>
@@ -176,7 +165,7 @@ function Good() {
               {id !== 'new' && (
                 <>
                   <Form.Item label='Статус' name='status'>
-                    <Select>
+                    <Select size='large'>
                       <Select.Option value='published'>Опубликованный</Select.Option>
                       <Select.Option value='draft'>Черновик</Select.Option>
                     </Select>
@@ -185,7 +174,7 @@ function Good() {
                 </>
               )}
               <Form.Item label='Категория' name='categoryId'>
-                <Select>
+                <Select size='large'>
                   <Select.Option value={null}>Не указана</Select.Option>
                   {categories.map((category) => (
                     <Select.Option value={category.id}>{category.title || category.id}</Select.Option>
@@ -194,15 +183,15 @@ function Good() {
               </Form.Item>
               <CustomDivider />
               <Form.Item label='Артикул' name='articleNumber'>
-                <Input />
+                <Input size='large' />
               </Form.Item>
               <CustomDivider />
               <Form.Item label='Название модификации' name='modifiedName'>
-                <Input />
+                <Input size='large' />
               </Form.Item>
               <CustomDivider />
               <Form.Item label='Количество' name='count'>
-                <Input />
+                <Input size='large' />
               </Form.Item>
               {false && (
                 <>
