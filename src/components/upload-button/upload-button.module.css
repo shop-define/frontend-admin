@@ -1,0 +1,22 @@
+.upload > div {
+  scrollbar-width: none;
+  overflow-x: scroll;
+  flex-flow: row nowrap !important;
+  gap: 20px !important;
+}
+
+.upload > div > div {
+  order: 2;
+  min-width: 194px !important;
+  height: 194px !important;
+  background-color: transparent !important;
+}
+
+.upload > div > div:last-of-type {
+  order: 1;
+}
+
+.uploadContainer {
+  height: 100%;
+  padding: 18px 12px;
+}

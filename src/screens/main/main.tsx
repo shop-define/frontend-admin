@@ -1,7 +1,5 @@
-import ExampleComponent from '../../components/example-component/example-component.tsx'
-
 function Main() {
-  return <ExampleComponent />
+  return <div>Main</div>
 }
 
 export default Main
