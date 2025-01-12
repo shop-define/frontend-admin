@@ -1,0 +1,151 @@
+/* Основной оверлей модального окна */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Контейнер модального окна */
+.modal-container {
+  background: #fff;
+  width: 500px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s ease;
+}
+
+/* Заголовок модального окна */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.modal-header h2 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Тело модального окна */
+.modal-body {
+  padding: 20px;
+}
+
+.modal-label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.modal-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* Загрузка файлов */
+.modal-files {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.file-upload {
+  flex: 1;
+  text-align: center;
+}
+
+.file-label {
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.file-dropzone {
+  border: 2px dashed #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.file-input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.file-text {
+  font-size: 12px;
+  color: #777;
+}
+
+.file-button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  font-size: 14px;
+  border: 1px solid #007bff;
+  background: none;
+  color: #007bff;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.file-button:hover {
+  background: #007bff;
+  color: #fff;
+}
+
+/* Подвал модального окна */
+.modal-footer {
+  padding: 20px;
+  border-top: 1px solid #eee;
+  text-align: right;
+}
+
+.modal-submit {
+  padding: 10px 20px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-submit:hover {
+  background: #0056b3;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

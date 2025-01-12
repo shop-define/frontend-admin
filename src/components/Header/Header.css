@@ -1,0 +1,130 @@
+
+.header {
+    width: 100%;
+    max-width: 1200px;
+    justify-content: space-between;
+    align-self: center;
+    align-content: center;
+    align-items: center;
+}
+
+.header   .logotype__name {
+  color: rgb(0, 0, 0);
+  font-weight:500;
+  margin-left: 8px;
+
+}
+.header-container {
+    max-width: 1200px;
+}
+.header-container.hidden {
+    transition: 1s;
+    opacity: 0 !important;
+}
+.header-input.active {
+    transition: 1s;
+    top: 20px !important;
+}
+.header__left-side {
+    width: 419px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: row wrap;
+}
+.header__right-side {
+    width: 419px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header__catalog {
+    cursor: pointer;
+    width: 110px;
+    height: 40px;
+    background-color: rgba(70, 90, 213, 1);
+    border-radius: 6px;
+}
+.header__button__catalog {
+    align-items: center;
+    display: flex;
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+}
+.header__catalog__text {
+    color: #FFFFFF;
+    font-weight: 400;
+}
+.header__input {
+    width: 760px;
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.search {
+    width: 40px;
+    height: 40px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    align-content: center;
+}
+.navigation {
+    height: fit-content;
+}
+.navigation-list {
+    gap: 28px;
+}
+.header__icon__search {
+    width: 16px;
+    height: 16px;
+    margin: auto;
+}
+.navigation__item__link {
+    font-weight: 600;
+}
+.navigation__item__link__container {
+    display: flex;
+    flex-flow: column;
+    width: fit-content;
+    align-items: center;
+}
+.line{
+    width: 100%;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    margin-bottom: 56px;
+}
+.no-wrap {
+    flex-wrap: nowrap;
+}
+.line {
+    margin: 0;
+    margin-bottom: 56px;
+}
+/* .line-2 {
+    height: 2px;
+}
+.line-3 {
+    height: 2px;
+} */
+.catalog__icon.active .line-1 {
+    transform: translateY(10px) rotate(45deg);
+}
+.catalog__icon.active .line-2 {
+    opacity: 0;
+}
+.catalog__icon.active .line-3 {
+    transform: translateY(-10px) rotate(-45deg);
+}
+@media only screen and (max-width: 400px) {
+    .header__left-side {   
+        display:none
+    }
+    .navigation {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        margin: auto;
+    }
+}

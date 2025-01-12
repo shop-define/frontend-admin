@@ -1,0 +1,23 @@
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box ;
+}
+
+.root {
+  display: flex;
+  width: 100dvw;
+  height: 100dvh;
+}
+
+li {
+  list-style: none;
+}
+
+/* .ant-layout {
+  background-color: white !important;
+} */
