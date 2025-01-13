@@ -1,71 +1,60 @@
-import React, { useState } from "react";
-import "./UserAccount.css";
+import React from 'react'
+import { Form, Input, Button, Card, message } from 'antd'
 
-const UserAccount = () => {
-  const [selectedDeliveries, setSelectedDeliveries] = useState([]);
+import UploadButton from '../../components/upload-button/upload-button'
+import { useSettings } from '../../helpers/SettingsContext'
 
-  const handleDeliveryChange = (event) => {
-    const { value, checked } = event.target;
-    setSelectedDeliveries((prev) =>
-      checked
-        ? [...prev, value]
-        : prev.filter((item) => item !== value) 
-    );
-  };
+const UserAccount: React.FC = () => {
+  const { settings, updateSettings } = useSettings() 
+  // Получаем текущее значение (title, logo) и функцию обновления
+
+  // Ант-дизайн форма
+  const [form] = Form.useForm()
+
+  // При первом рендере (или при каждом) — заполнить форму
+  React.useEffect(() => {
+    // У нас logo — строка, UploadButton требует массив
+    form.setFieldsValue({
+      title: settings.title,
+      logo: settings.logo ? [settings.logo] : [],
+    })
+  }, [settings])
+
+  const onFinish = async (values: { title: string; logo: string[] }) => {
+    try {
+      // Берём первый элемент массива
+      const logoFile = values.logo[0] || ''
+      await updateSettings({ title: values.title, logo: logoFile })
+      message.success('Настройки сохранены')
+    } catch (err) {
+      message.error('Ошибка сохранения настроек')
+    }
+  }
 
   return (
-    <div className="user-account">
-      <h1 className="user-account-title">Личный кабинет</h1>
+    <Card style={{ maxWidth: 600, margin: '20px auto' }}>
+      <Form form={form} layout='vertical' onFinish={onFinish}>
+        <Form.Item
+          label='Название магазина'
+          name='title'
+          rules={[{ required: true, message: 'Введите название магазина' }]}
+        >
+          <Input />
+        </Form.Item>
 
-      <section className="user-section">
-        <h2 className="section-title">Способ оплаты</h2>
-        <div className="payment-options">
-          <div className="payment-card">
-            <span className="payment-logo">💳</span>
-            <span className="payment-info">+4211</span>
-            <span className="payment-type">МИР</span>
-          </div>
-          <div className="add-payment-card">
-            <span className="add-logo">+</span>
-            <span>Добавить карту</span>
-          </div>
-        </div>
-      </section>
+        <Form.Item label='Логотип' name='logo'>
+          {/* UploadButton ожидает массив строк */}
+          <UploadButton maxCount={1} />
+        </Form.Item>
 
-      <section className="user-section">
-        <h2 className="section-title">Способ доставки</h2>
-        <div className="delivery-options">
-          <label className="delivery-option">
-            <input
-              type="checkbox"
-              value="Вариант1"
-              checked={selectedDeliveries.includes("Вариант1")}
-              onChange={handleDeliveryChange}
-            />
-            Вариант1
-          </label>
-          <label className="delivery-option">
-            <input
-              type="checkbox"
-              value="Вариант2"
-              checked={selectedDeliveries.includes("Вариант2")}
-              onChange={handleDeliveryChange}
-            />
-            Вариант2
-          </label>
-          <label className="delivery-option">
-            <input
-              type="checkbox"
-              value="Вариант3"
-              checked={selectedDeliveries.includes("Вариант3")}
-              onChange={handleDeliveryChange}
-            />
-            Вариант3
-          </label>
-        </div>
-      </section>
-    </div>
-  );
-};
+        <Form.Item>
+          <Button type='primary' htmlType='submit'>
+            Сохранить
+          </Button>
+        </Form.Item>
+      </Form>
+    </Card>
+  )
+}
 
-export default UserAccount;
+export default UserAccount

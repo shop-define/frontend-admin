@@ -6,14 +6,9 @@ import Main from './screens/main/main.tsx'
 import Good from './screens/good/good.tsx'
 import Goods from './screens/goods/goods.tsx'
 import Categories from './screens/categories/categories.tsx'
-import Dashboard from './components/Dashboard/Dashboard'; 
-import ProductList from './components/ProductList/ProductList';
-import ProductForm from './components/ProductForm/ProductForm';
-import OrderList from './components/OrderList/OrderList';
 import './index.css'
-import OrderDetails from './components/OrderDetails/OrderDetails';
+
 import EditProduct from './components/EditProduct/EditProduct';
-import AddCategoryModal from './components/AddCategoryModal/AddCategoryModal';
 import AddNewsModal from './components/AddNewsModal/AddNewsModal';
 import UserAccount from './components/UserAccount/UserAccount';
 
@@ -21,6 +16,8 @@ import S from './app.module.css'
 import Checkout from './screens/checkout/checkout.tsx'
 import HeaderComponent from './components/HeaderComponent/HeaderComponent.tsx'
 import FooterComponent from './components/FooterComponent/FooterComponent.tsx'
+import Checkouts from './screens/checkouts/checkouts.tsx'
+import { SettingsProvider } from './helpers/SettingsContext.tsx'
 
 // Клиент можно выпилить, если не будешь использовать react-query
 const queryClient = new QueryClient()
@@ -55,6 +52,10 @@ const router = createBrowserRouter([
         element: <Goods />,
       },
       {
+        path: '/checkouts',
+        element: <Checkouts />,
+      },
+      {
         path: '/category',
         element: <Categories />,
       },
@@ -65,22 +66,6 @@ const router = createBrowserRouter([
       {
         path: '/checkout/:id',
         element: <Checkout />,
-      },
-      {
-        path: '/orders',
-        element: (
-            <OrderList />
-        ),
-      },
-      {
-        path: '/orders/:orderId',
-        element: 
-          <OrderDetails />
-      },
-      {
-        path: '/categories/create',
-        element: 
-          <AddCategoryModal />
       },
       {
         path: '/edit-product/:productId',
@@ -123,7 +108,11 @@ function App() {
       }}
     >
       <QueryClientProvider client={queryClient}>
+      <SettingsProvider>
+
         <RouterProvider router={router} />
+
+      </SettingsProvider>
       </QueryClientProvider>
     </ConfigProvider>
   );

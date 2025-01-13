@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Logo from '../../assets/logo.svg'; // Убедитесь, что путь к лого правильный
+import { useSettings } from '../../helpers/SettingsContext';
 
 interface LogotypeProps {
   size: 'small' | 'medium';
 }
 
 const Logotype: React.FC<LogotypeProps> = ({ size }) => {
+
+  const { settings } = useSettings()
+
   const styles = {
     small: {
       fontSize: '32px',
@@ -21,9 +24,10 @@ const Logotype: React.FC<LogotypeProps> = ({ size }) => {
   return (
     <Link to="/" className="link">
       <div className="logotype" style={{ display: 'flex', alignItems: 'center' }}>
-        <img src={Logo} alt="Логотип" style={{ width: 40, height: 40 }} />
+      {settings.logo && <img src={settings.logo} alt="Логотип" style={{ height: 50 }} />}
+
         <p className="logotype__name" style={styles[size]}>
-          Мини Маркет
+          {settings.title || 'Мини Маркет'}
         </p>
       </div>
     </Link>
