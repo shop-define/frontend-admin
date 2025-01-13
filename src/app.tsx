@@ -5,6 +5,7 @@ import { ConfigProvider, Layout } from 'antd'
 import Main from './screens/main/main.tsx'
 import Good from './screens/good/good.tsx'
 import Goods from './screens/goods/goods.tsx'
+import Categories from './screens/categories/categories.tsx'
 
 import S from './app.module.css'
 
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: '/good',
         element: <Goods />,
+      },
+      {
+        path: '/category',
+        element: <Categories />,
       },
     ],
   },
