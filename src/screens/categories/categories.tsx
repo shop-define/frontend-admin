@@ -47,6 +47,7 @@ function Categories() {
         openModal={openModal}
         id={categoryId ?? undefined}
         onCreate={(data) => setCategories((prev) => [...(prev ?? []), data])}
+        onUpdate={(data) => setCategories((prev) => [...(prev ?? []).filter((item) => item.id !== data.id), data])}
         onClose={handleClose}
         categories={categories}
       />

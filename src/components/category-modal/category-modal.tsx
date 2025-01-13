@@ -13,9 +13,10 @@ type Props = {
   id?: number
   categories?: GoodCategoriesListResponse
   onCreate?: (category: CategoryResponse) => void
+  onUpdate?: (category: CategoryResponse) => void
 }
 
-function CategoryModal({ openModal, onClose, onDelete, categories, onCreate, id }: Props) {
+function CategoryModal({ openModal, onClose, onDelete, categories, onCreate, onUpdate, id }: Props) {
   const [form] = Form.useForm<
     CategoryResponse & {
       image: string[]
@@ -63,6 +64,27 @@ function CategoryModal({ openModal, onClose, onDelete, categories, onCreate, id 
       )
   }
 
+  const handleEdit = () => {
+    form.submit()
+    const fields = form.getFieldsValue()
+    categoriesApi
+      .updateCategory({
+        ...fields,
+        image: fields?.image?.[0],
+        icon: fields?.icon?.[0],
+      })
+      .then((data) => {
+        onClose?.()
+        onUpdate?.(data)
+      })
+      .catch(() =>
+        messageApi.open({
+          type: 'error',
+          content: 'Ошибка сохранения',
+        }),
+      )
+  }
+
   return (
     <>
       {contextHolder}
@@ -82,7 +104,7 @@ function CategoryModal({ openModal, onClose, onDelete, categories, onCreate, id 
               </Flex>
             ) : (
               <Flex justify='center'>
-                <Button onClick={handleCreate} size='large'>
+                <Button onClick={openModal === 'create' ? handleCreate : handleEdit} size='large'>
                   {openModal === 'create' ? 'Добавить' : 'Сохранить'}
                 </Button>
               </Flex>

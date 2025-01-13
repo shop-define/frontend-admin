@@ -27,12 +27,23 @@ async function getGoodCategories(): Promise<GoodCategoriesListResponse> {
 
 async function createCategory(
   category: paths['/api/good-categories/']['post']['requestBody']['content']['application/json'],
-): Promise<CategoryResponse> {
+) {
   return fetchWrapper.post<CategoryResponse>(apiUrl, category, true)
+}
+
+async function updateCategory(
+  category: NonNullable<CategoryTypes['patch']['requestBody']>['content']['application/json'],
+) {
+  return fetchWrapper.post<CategoryTypes['patch']['responses']['200']['content']['application/json']['data']>(
+    apiUrl,
+    category,
+    true,
+  )
 }
 
 export const categoriesApi = {
   getGoodCategories,
   getCategoryById,
   createCategory,
+  updateCategory,
 }
