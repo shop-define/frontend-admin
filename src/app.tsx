@@ -1,7 +1,11 @@
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { createBrowserRouter, RouterProvider, Outlet, useNavigate } from 'react-router-dom';
-import { ConfigProvider } from 'antd';
-import AppLayout from './components/Layout/Layout'; // Импорт Layout
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
+import { Content, Header, Footer } from 'antd/es/layout/layout'
+import { ConfigProvider, Layout } from 'antd'
+import Main from './screens/main/main.tsx'
+import Good from './screens/good/good.tsx'
+import Goods from './screens/goods/goods.tsx'
+import Categories from './screens/categories/categories.tsx'
 import Dashboard from './components/Dashboard/Dashboard'; 
 import ProductList from './components/ProductList/ProductList';
 import ProductForm from './components/ProductForm/ProductForm';
@@ -13,81 +17,88 @@ import AddCategoryModal from './components/AddCategoryModal/AddCategoryModal';
 import AddNewsModal from './components/AddNewsModal/AddNewsModal';
 import UserAccount from './components/UserAccount/UserAccount';
 
+import S from './app.module.css'
+import HeaderComponent from './components/HeaderComponent/HeaderComponent.tsx'
+import FooterComponent from './components/FooterComponent/FooterComponent.tsx'
 
-const queryClient = new QueryClient();
+// Клиент можно выпилить, если не будешь использовать react-query
+const queryClient = new QueryClient()
 
+const ConfigProviderWrap = () => {
+  // Тут можно прокинуть стор пользователя, к примеру
+  return (
+    <Layout className={S.root}>
+      <HeaderComponent />
+      <Content className={S.content}>
+        <Outlet />
+      </Content>
+      <FooterComponent />
+    </Layout>
+  )
+}
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: (
-      <AppLayout>
-        <Dashboard />
-      </AppLayout>
-    ),
+    element: <ConfigProviderWrap />,
+    children: [
+      {
+        path: '/',
+        element: <Main />,
+      },
+      {
+        path: '/good/:id',
+        element: <Good />,
+      },
+      {
+        path: '/good',
+        element: <Goods />,
+      },
+      {
+        path: '/category',
+        element: <Categories />,
+      },
+      {
+        path: '/category/:id',
+        element: <Categories />,
+      },
+      {
+        path: '/orders',
+        element: (
+            <OrderList />
+        ),
+      },
+      {
+        path: '/orders/:orderId',
+        element: 
+          <OrderDetails />
+      },
+      {
+        path: '/categories/create',
+        element: 
+          <AddCategoryModal />
+      },
+      {
+        path: '/edit-product/:productId',
+        element: 
+          <EditProduct />
+      },
+      {
+        path: '/news/create',
+        element: (
+            <AddNewsModal />
+        ),
+      },
+      {
+        path: '/profile',
+        element: (
+            <UserAccount />
+        ),
+      }  
+    ],
   },
-  {
-    path: '/products',
-    element: (
-      <AppLayout>
-        <ProductList />
-      </AppLayout>
-    ),
-  },
-  {
-    path: '/products/create',
-    element: (
-      <AppLayout>
-        <ProductForm />
-      </AppLayout>
-    ),
-  },
-  {
-    path: '/orders',
-    element: (
-      <AppLayout>
-        <OrderList />
-      </AppLayout>
-    ),
-  },
-  {
-    path: '/orders/:orderId',
-    element: 
-    <AppLayout>
-      <OrderDetails />
-    </AppLayout>,
-  },
-  {
-    path: '/categories/create',
-    element: 
-    <AppLayout>
-      <AddCategoryModal />
-    </AppLayout>,
-  },
-  {
-    path: '/edit-product/:productId',
-    element: 
-    <AppLayout>
-      <EditProduct />
-    </AppLayout>,
-  },
-  {
-    path: '/news/create',
-    element: (
-      <AppLayout>
-        <AddNewsModal />
-      </AppLayout>
-    ),
-  },
-  {
-    path: '/profile',
-    element: (
-      <AppLayout>
-        <UserAccount />
-      </AppLayout>
-    ),
-  }  
-]);
+])
+
+
 
 function App() {
   return (

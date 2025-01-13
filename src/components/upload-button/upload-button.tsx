@@ -8,9 +8,10 @@ import s from './upload-button.module.css'
 type Props = {
   value?: string[]
   onChange?: (value: string[]) => void
+  maxCount?: number
 }
 
-function UploadButton({ value = [], onChange }: Props) {
+function UploadButton({ value = [], onChange, maxCount }: Props) {
   const [messageApi, contextHolder] = message.useMessage()
 
   const fileList = value?.map((item) => ({
@@ -46,10 +47,12 @@ function UploadButton({ value = [], onChange }: Props) {
         onRemove={handleRemove}
         className={s.upload}
       >
-        <Flex justify={'space-between'} vertical className={s.uploadContainer}>
-          <Text>Выберите файл или перетащите его сюда</Text>
-          <Button block>Открыть файл</Button>
-        </Flex>
+        {maxCount && value?.length >= maxCount ? null : (
+          <Flex justify={'space-between'} vertical className={s.uploadContainer}>
+            <Text>Выберите файл или перетащите его сюда</Text>
+            <Button block>Открыть файл</Button>
+          </Flex>
+        )}
       </Upload>
     </>
   )

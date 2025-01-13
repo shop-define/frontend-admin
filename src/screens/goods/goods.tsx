@@ -1,4 +1,4 @@
-import { Button, Flex, message, Modal, Pagination, Select } from 'antd'
+import { Button, Flex, message, Pagination, Select } from 'antd'
 import Title from 'antd/lib/typography/Title'
 import Text from 'antd/lib/typography/Text'
 import { useEffect, useState } from 'react'
@@ -15,7 +15,6 @@ const pageSize = 10
 function Goods() {
   const navigate = useNavigate()
   const [goods, setGoods] = useState<GoodSearchResponse>()
-  const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
   const [sort, setSort] = useState<
     'date' | 'date_ask' | 'count' | 'count_ask' | 'price' | 'price_ask' | 'published' | 'draft'
   >('date')
@@ -52,31 +51,6 @@ function Goods() {
   return (
     <>
       {contextHolder}
-      <Modal
-        open={isOpenDeleteModal}
-        onCancel={() => setIsOpenDeleteModal(false)}
-        footer={() => (
-          <>
-            <Flex gap={44}>
-              <Button
-                size='large'
-                block
-                key='submit'
-                onClick={() => {
-                  setIsOpenDeleteModal(false)
-                }}
-              >
-                Да
-              </Button>
-              <Button size='large' block key='back' onClick={() => setIsOpenDeleteModal(false)}>
-                Нет
-              </Button>
-            </Flex>
-          </>
-        )}
-      >
-        <Title level={2}>Вы действительно хотите удалить товар?</Title>
-      </Modal>
       <Flex vertical gap='large'>
         <Title level={2} style={{ marginBottom: 0 }}>
           Мои товары

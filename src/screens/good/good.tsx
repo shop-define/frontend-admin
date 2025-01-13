@@ -2,10 +2,11 @@ import { Button, Col, Divider, Flex, Form, Input, message, Modal, Radio, Row, Se
 import Title from 'antd/lib/typography/Title'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { goodsApi, GoodCategoriesListResponse, goodCategoryApi } from '../../api/data'
+import { categoriesApi, goodsApi } from '../../api/data'
 import { GoodResponse } from '../../api/data/good.ts'
 import UploadButton from '../../components/upload-button/upload-button.tsx'
 import CustomDivider from '../../components/custom-divider/custom-divider.tsx'
+import { GoodCategoriesListResponse } from '../../api/data/categories.ts'
 
 function Good() {
   const { id } = useParams()
@@ -17,7 +18,7 @@ function Good() {
   const [form] = Form.useForm<GoodResponse>()
 
   useEffect(() => {
-    goodCategoryApi.getGoodCategories().then(setCategories).catch(console.error)
+    categoriesApi.getGoodCategories().then(setCategories).catch(console.error)
   }, [])
 
   useEffect(() => {

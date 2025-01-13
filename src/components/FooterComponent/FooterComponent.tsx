@@ -4,14 +4,14 @@ import Logotype from '../Logotype/Logotype';
 import './Footer.css';
 
 
-const Footer = () => {
+const FooterComponent = () => {
   const miniMarketItems = ['Мини Маркет', 'Главная', 'Личный кабинет', 'Заказы', 'Корзина', 'Избранные товары'];
   const earnItems = [
     'Зарабатывать',
     'Стать продавцом',
     'Что продавать',
     'Стать поставщиком',
-    'Стать портнёром',
+    'Стать партнёром',
     'Открыть пункт выдачи',
   ];
   const helpItems = [
@@ -51,4 +51,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default FooterComponent;
