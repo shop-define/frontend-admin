@@ -32,11 +32,19 @@ async function createCategory(
 }
 
 async function updateCategory(
+  categoryId: NonNullable<CategoryTypes['patch']['parameters']>['path']['id'],
   category: NonNullable<CategoryTypes['patch']['requestBody']>['content']['application/json'],
 ) {
-  return fetchWrapper.post<CategoryTypes['patch']['responses']['200']['content']['application/json']['data']>(
-    apiUrl,
+  return fetchWrapper.patch<CategoryTypes['patch']['responses']['200']['content']['application/json']['data']>(
+    `${apiUrl}/${categoryId}`,
     category,
+    true,
+  )
+}
+
+async function deleteCategory(categoryId: NonNullable<CategoryTypes['delete']['parameters']>['path']['id']) {
+  return fetchWrapper.delete<CategoryTypes['delete']['responses']['200']['content']['application/json']['data']>(
+    `${apiUrl}/${categoryId}`,
     true,
   )
 }
@@ -46,4 +54,5 @@ export const categoriesApi = {
   getCategoryById,
   createCategory,
   updateCategory,
+  deleteCategory,
 }

@@ -9,7 +9,7 @@ import { CategoryResponse, GoodCategoriesListResponse } from '../../api/data/cat
 type Props = {
   openModal?: 'delete' | 'create' | 'edit' | false
   onClose?: () => void
-  onDelete?: () => void
+  onDelete?: (id: number) => void
   id?: number
   categories?: GoodCategoriesListResponse
   onCreate?: (category: CategoryResponse) => void
@@ -66,9 +66,10 @@ function CategoryModal({ openModal, onClose, onDelete, categories, onCreate, onU
 
   const handleEdit = () => {
     form.submit()
+    if (!id) return
     const fields = form.getFieldsValue()
     categoriesApi
-      .updateCategory({
+      .updateCategory(id, {
         ...fields,
         image: fields?.image?.[0],
         icon: fields?.icon?.[0],
@@ -85,6 +86,22 @@ function CategoryModal({ openModal, onClose, onDelete, categories, onCreate, onU
       )
   }
 
+  const handleDelete = () => {
+    if (!id) return
+    categoriesApi
+      .deleteCategory(id)
+      .then(() => {
+        onClose?.()
+        onDelete?.(id)
+      })
+      .catch(() =>
+        messageApi.open({
+          type: 'error',
+          content: 'Ошибка удаления',
+        }),
+      )
+  }
+
   return (
     <>
       {contextHolder}
@@ -95,7 +112,7 @@ function CategoryModal({ openModal, onClose, onDelete, categories, onCreate, onU
           <div style={{ marginTop: 60 }}>
             {openModal === 'delete' ? (
               <Flex gap={44}>
-                <Button size='large' block key='submit' onClick={onDelete}>
+                <Button size='large' block key='submit' onClick={handleDelete}>
                   Да
                 </Button>
                 <Button size='large' block key='back' onClick={onClose}>
@@ -147,10 +164,10 @@ function CategoryModal({ openModal, onClose, onDelete, categories, onCreate, onU
               </Select>
             </Form.Item>
             <Flex justify='space-between'>
-              <Form.Item label='Фото' name='image'>
+              <Form.Item label='Фото' name='image' style={{ width: '200px', overflow: 'hidden' }}>
                 <UploadButton maxCount={1} />
               </Form.Item>
-              <Form.Item label='Иконка' name='icon'>
+              <Form.Item label='Иконка' name='icon' style={{ width: '200px', overflow: 'hidden' }}>
                 <UploadButton maxCount={1} />
               </Form.Item>
             </Flex>

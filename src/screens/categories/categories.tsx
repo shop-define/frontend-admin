@@ -7,21 +7,27 @@ import PlusOutlined from '@ant-design/icons/PlusOutlined'
 import CustomDivider from '../../components/custom-divider/custom-divider.tsx'
 import { GoodCategoriesListResponse } from '../../api/data/categories.ts'
 import EditOutlined from '@ant-design/icons/EditOutlined'
+import ArrowRightOutlined from '@ant-design/icons/ArrowRightOutlined'
 import DeleteOutlined from '@ant-design/icons/DeleteOutlined'
 import fallbackImage from '../../assets/fallback-image.ts'
 import { IMAGE_URL } from '../../constants/constants.ts'
 import CategoryModal from '../../components/category-modal/category-modal.tsx'
+import { useNavigate, useParams } from 'react-router-dom'
 
 function Categories() {
-  //const navigate = useNavigate()
+  const { id } = useParams()
   const [categories, setCategories] = useState<GoodCategoriesListResponse>()
+  const [allCategories, setAllCategories] = useState<GoodCategoriesListResponse>()
   const [openModal, setOpenModal] = useState<'edit' | 'delete' | 'create' | false>(false)
   const [messageApi, contextHolder] = message.useMessage()
   const [categoryId, setCategoryId] = useState<number | null>(null)
+  const navigate = useNavigate()
+
+  const parentCategory = allCategories?.find((cat) => cat.id.toString() === id)
 
   useEffect(() => {
     handleFetch()
-  }, [])
+  }, [id])
 
   const handleClose = () => {
     setCategoryId(null)
@@ -31,7 +37,14 @@ function Categories() {
   const handleFetch = () => {
     categoriesApi
       .getGoodCategories()
-      .then((res) => setCategories(res))
+      .then((res) => {
+        setCategories(
+          res.filter((item) => {
+            return id ? item.parentId?.toString() === id : true
+          }),
+        )
+        setAllCategories(res)
+      })
       .catch(() =>
         messageApi.open({
           type: 'error',
@@ -48,8 +61,12 @@ function Categories() {
         id={categoryId ?? undefined}
         onCreate={(data) => setCategories((prev) => [...(prev ?? []), data])}
         onUpdate={(data) => setCategories((prev) => [...(prev ?? []).filter((item) => item.id !== data.id), data])}
+        onDelete={(deletedId) => {
+          setCategories((prev) => prev?.filter((item) => item.id !== deletedId))
+          setAllCategories((prev) => prev?.filter((item) => item.id !== deletedId))
+        }}
         onClose={handleClose}
-        categories={categories}
+        categories={allCategories}
       />
       <Flex vertical gap={108}>
         <Button
@@ -68,7 +85,9 @@ function Categories() {
           Добавить категорию
         </Button>
         <Flex vertical>
-          <Title level={2}>Список категорий</Title>
+          <Title level={2}>
+            {parentCategory ? `Список дочерних категорий "${parentCategory.title}"` : 'Список категорий'}
+          </Title>
           <Flex
             vertical
             align='center'
@@ -101,6 +120,7 @@ function Categories() {
                     <Text style={{ fontSize: 22 }}>{item.title}</Text>
                   </Flex>
                   <Flex gap={24}>
+                    <Button icon={<ArrowRightOutlined />} onClick={() => navigate(`/category/${item.id.toString()}`)} />
                     <Button
                       icon={<EditOutlined />}
                       onClick={() => {
@@ -108,7 +128,13 @@ function Categories() {
                         setCategoryId(item.id)
                       }}
                     />
-                    <Button icon={<DeleteOutlined />} onClick={() => setOpenModal('delete')} />
+                    <Button
+                      icon={<DeleteOutlined />}
+                      onClick={() => {
+                        setOpenModal('delete')
+                        setCategoryId(item.id)
+                      }}
+                    />
                   </Flex>
                 </Flex>
                 {index !== categories?.length - 1 && <CustomDivider margin={0} />}
