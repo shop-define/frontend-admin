@@ -288,8 +288,10 @@ export interface paths {
                 id: number
                 title: string
                 description: string
-                image: string
-                icon: string
+                /** @default null */
+                image: null | string
+                /** @default null */
+                icon: null | string
                 /** @default null */
                 parentId: null | number
               }
@@ -340,8 +342,10 @@ export interface paths {
                 id: number
                 title: string
                 description: string
-                image: string
-                icon: string
+                /** @default null */
+                image: null | string
+                /** @default null */
+                icon: null | string
                 /** @default null */
                 parentId: null | number
               }
@@ -396,8 +400,10 @@ export interface paths {
           'application/json': {
             title?: string
             description?: string
-            image?: string
-            icon?: string
+            /** @default null */
+            image?: null | string
+            /** @default null */
+            icon?: null | string
             /** @default null */
             parentId?: null | number
           }
@@ -418,8 +424,10 @@ export interface paths {
                 id: number
                 title: string
                 description: string
-                image: string
-                icon: string
+                /** @default null */
+                image: null | string
+                /** @default null */
+                icon: null | string
                 /** @default null */
                 parentId: null | number
               }
@@ -492,8 +500,10 @@ export interface paths {
                 id: number
                 title: string
                 description: string
-                image: string
-                icon: string
+                /** @default null */
+                image: null | string
+                /** @default null */
+                icon: null | string
                 /** @default null */
                 parentId: null | number
               }[]
@@ -531,8 +541,10 @@ export interface paths {
           'application/json': {
             title: string
             description: string
-            image: string
-            icon: string
+            /** @default null */
+            image?: null | string
+            /** @default null */
+            icon?: null | string
             /** @default null */
             parentId?: null | number
           }
@@ -553,8 +565,10 @@ export interface paths {
                 id: number
                 title: string
                 description: string
-                image: string
-                icon: string
+                /** @default null */
+                image: null | string
+                /** @default null */
+                icon: null | string
                 /** @default null */
                 parentId: null | number
               }
@@ -3162,6 +3176,7 @@ export interface paths {
                 paymentMethodName: string
                 deliveryMethodId: string
                 deliveryMethodName: string
+                track: string
                 recipientName: string
                 recipientAddress: string
                 recipientPhone: string
@@ -3171,6 +3186,8 @@ export interface paths {
                 goodsName: string[]
                 paymentTotal: number
                 status: 'created' | 'payed' | 'delivery' | 'delivered' | 'success' | 'canceled'
+                createdAt: string
+                updatedAt: string
               }
             }
           }
@@ -3235,6 +3252,7 @@ export interface paths {
                 paymentMethodName: string
                 deliveryMethodId: string
                 deliveryMethodName: string
+                track: string
                 recipientName: string
                 recipientAddress: string
                 recipientPhone: string
@@ -3244,6 +3262,8 @@ export interface paths {
                 goodsName: string[]
                 paymentTotal: number
                 status: 'created' | 'payed' | 'delivery' | 'delivered' | 'success' | 'canceled'
+                createdAt: string
+                updatedAt: string
               }[]
               total: number
             }
@@ -3304,6 +3324,7 @@ export interface paths {
                 paymentMethodName: string
                 deliveryMethodId: string
                 deliveryMethodName: string
+                track: string
                 recipientName: string
                 recipientAddress: string
                 recipientPhone: string
@@ -3313,6 +3334,8 @@ export interface paths {
                 goodsName: string[]
                 paymentTotal: number
                 status: 'created' | 'payed' | 'delivery' | 'delivered' | 'success' | 'canceled'
+                createdAt: string
+                updatedAt: string
               }
             }
           }
@@ -3349,6 +3372,252 @@ export interface paths {
         }
       }
     }
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/private/checkout/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    get: {
+      parameters: {
+        query?: never
+        header?: never
+        path: {
+          id: string
+        }
+        cookie?: never
+      }
+      requestBody?: never
+      responses: {
+        /** @description Default Response */
+        200: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              /** @enum {string} */
+              status: 'ok' | 'error'
+              /** Checkout */
+              data: {
+                id: string
+                userId: number
+                paymentMethodId: string
+                paymentMethodName: string
+                deliveryMethodId: string
+                deliveryMethodName: string
+                track: string
+                recipientName: string
+                recipientAddress: string
+                recipientPhone: string
+                goodsIdList: string[]
+                goodsPrice: number[]
+                goodsCount: number[]
+                goodsName: string[]
+                paymentTotal: number
+                status: 'created' | 'payed' | 'delivery' | 'delivered' | 'success' | 'canceled'
+                createdAt: string
+                updatedAt: string
+              }
+            }
+          }
+        }
+        /** @description Default Response */
+        404: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              /** @enum {string} */
+              status: 'ok' | 'error'
+              data: {
+                message: string
+              }
+            }
+          }
+        }
+      }
+    }
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch: {
+      parameters: {
+        query?: never
+        header?: never
+        path: {
+          id: string
+        }
+        cookie?: never
+      }
+      requestBody?: {
+        content: {
+          'application/json': {
+            paymentMethodId?: string
+            paymentMethodName?: string
+            deliveryMethodId?: string
+            deliveryMethodName?: string
+            track?: string
+            recipientName?: string
+            recipientAddress?: string
+            recipientPhone?: string
+            goodsIdList?: string[]
+            goodsPrice?: number[]
+            goodsCount?: number[]
+            goodsName?: string[]
+            status?: 'created' | 'payed' | 'delivery' | 'delivered' | 'success' | 'canceled'
+          }
+        }
+      }
+      responses: {
+        /** @description Default Response */
+        200: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              /** @enum {string} */
+              status: 'ok' | 'error'
+              /** Checkout */
+              data: {
+                id: string
+                userId: number
+                paymentMethodId: string
+                paymentMethodName: string
+                deliveryMethodId: string
+                deliveryMethodName: string
+                track: string
+                recipientName: string
+                recipientAddress: string
+                recipientPhone: string
+                goodsIdList: string[]
+                goodsPrice: number[]
+                goodsCount: number[]
+                goodsName: string[]
+                paymentTotal: number
+                status: 'created' | 'payed' | 'delivery' | 'delivered' | 'success' | 'canceled'
+                createdAt: string
+                updatedAt: string
+              }
+            }
+          }
+        }
+        /** @description Default Response */
+        403: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              /** @enum {string} */
+              status: 'ok' | 'error'
+              data: {
+                message: string
+              }
+            }
+          }
+        }
+        /** @description Default Response */
+        409: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              /** @enum {string} */
+              status: 'ok' | 'error'
+              data: {
+                message: string
+              }
+            }
+          }
+        }
+      }
+    }
+    trace?: never
+  }
+  '/api/private/checkout/': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    get: {
+      parameters: {
+        query?: {
+          limit?: number
+          offset?: number
+        }
+        header?: never
+        path?: never
+        cookie?: never
+      }
+      requestBody?: never
+      responses: {
+        /** @description Default Response */
+        200: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              /** @enum {string} */
+              status: 'ok' | 'error'
+              data: {
+                id: string
+                userId: number
+                paymentMethodId: string
+                paymentMethodName: string
+                deliveryMethodId: string
+                deliveryMethodName: string
+                track: string
+                recipientName: string
+                recipientAddress: string
+                recipientPhone: string
+                goodsIdList: string[]
+                goodsPrice: number[]
+                goodsCount: number[]
+                goodsName: string[]
+                paymentTotal: number
+                status: 'created' | 'payed' | 'delivery' | 'delivered' | 'success' | 'canceled'
+                createdAt: string
+                updatedAt: string
+              }[]
+              total: number
+            }
+          }
+        }
+        /** @description Default Response */
+        404: {
+          headers: {
+            [name: string]: unknown
+          }
+          content: {
+            'application/json': {
+              /** @enum {string} */
+              status: 'ok' | 'error'
+              data: {
+                message: string
+              }
+            }
+          }
+        }
+      }
+    }
+    put?: never
+    post?: never
     delete?: never
     options?: never
     head?: never

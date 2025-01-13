@@ -18,6 +18,7 @@ import AddNewsModal from './components/AddNewsModal/AddNewsModal';
 import UserAccount from './components/UserAccount/UserAccount';
 
 import S from './app.module.css'
+import Checkout from './screens/checkout/checkout.tsx'
 import HeaderComponent from './components/HeaderComponent/HeaderComponent.tsx'
 import FooterComponent from './components/FooterComponent/FooterComponent.tsx'
 
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
       {
         path: '/category/:id',
         element: <Categories />,
+      },
+      {
+        path: '/checkout/:id',
+        element: <Checkout />,
       },
       {
         path: '/orders',
