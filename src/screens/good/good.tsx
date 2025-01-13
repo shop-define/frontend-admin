@@ -174,7 +174,7 @@ function Good() {
                   <CustomDivider />
                 </>
               )}
-              <Form.Item label='Категория' name='categoryId'>
+              <Form.Item label='Категория' name='categoryId' initialValue={null}>
                 <Select size='large'>
                   <Select.Option value={null}>Не указана</Select.Option>
                   {categories.map((category) => (
