@@ -1,5 +1,5 @@
 export function getAuthToken() {
-  return `Bearer ${localStorage.getItem('token-shop_define')}`
+  return `Bearer ${localStorage.getItem('access-token')}`
 }
 
 type RequestOptions = {

@@ -8,6 +8,7 @@ import Goods from './screens/goods/goods.tsx'
 import Categories from './screens/categories/categories.tsx'
 
 import S from './app.module.css'
+import Checkout from './screens/checkout/checkout.tsx'
 
 // Клиент можно выпилить, если не будешь использовать react-query
 const queryClient = new QueryClient()
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: '/category/:id',
         element: <Categories />,
+      },
+      {
+        path: '/checkout/:id',
+        element: <Checkout />,
       },
     ],
   },
