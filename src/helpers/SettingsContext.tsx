@@ -63,8 +63,6 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   }, [])
 
   return (
-    <SettingsContext.Provider value={{ settings, fetchSettings, updateSettings }}>
-      {children}
-    </SettingsContext.Provider>
+    <SettingsContext.Provider value={{ settings, fetchSettings, updateSettings }}>{children}</SettingsContext.Provider>
   )
 }

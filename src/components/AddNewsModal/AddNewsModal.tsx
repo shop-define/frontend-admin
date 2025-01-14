@@ -1,86 +1,86 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "./AddNewsModal.css";
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import './AddNewsModal.css'
 
 const AddNewsModal = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const [news, setNews] = useState({
-    title: "",
-    description: "",
+    title: '',
+    description: '',
     image: null,
-  });
+  })
 
-  const handleChange = (e: any) => {
-    const { name, value, files } = e.target;
+  const handleChange = (e: unknown) => {
+    const { name, value, files } = (e as { target: { name: string; value: string; files?: string[] } }).target
     setNews((prev) => ({
       ...prev,
       [name]: files ? files[0] : value,
-    }));
-  };
+    }))
+  }
 
   const handleSubmit = () => {
-    console.log("News added:", news);
+    console.log('News added:', news)
     // Здесь вы можете добавить API-запрос для отправки данных на сервер
-    navigate(-1); // Закрытие модального окна
-  };
+    navigate(-1) // Закрытие модального окна
+  }
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-container">
-        <div className="modal-header">
+    <div className='modal-overlay'>
+      <div className='modal-container'>
+        <div className='modal-header'>
           <h2>Добавление новости</h2>
-          <button className="modal-close" onClick={() => navigate(-1)}>
+          <button className='modal-close' onClick={() => navigate(-1)}>
             ✕
           </button>
         </div>
-        <div className="modal-body">
-          <label className="modal-label">
+        <div className='modal-body'>
+          <label className='modal-label'>
             Заголовок
             <input
-              type="text"
-              name="title"
+              type='text'
+              name='title'
               value={news.title}
               onChange={handleChange}
-              className="modal-input"
-              placeholder="Введите заголовок"
+              className='modal-input'
+              placeholder='Введите заголовок'
             />
           </label>
-          <label className="modal-label">
+          <label className='modal-label'>
             Описание
             <textarea
-              name="description"
+              name='description'
               value={news.description}
               onChange={handleChange}
-              className="modal-textarea"
-              placeholder="Введите описание"
+              className='modal-textarea'
+              placeholder='Введите описание'
             />
           </label>
-          <label className="modal-label">
+          <label className='modal-label'>
             Изображение
-            <div className="file-dropzone">
+            <div className='file-dropzone'>
               <input
-                type="file"
-                name="image"
+                type='file'
+                name='image'
                 onChange={handleChange}
-                accept="image/png, image/jpeg"
-                className="file-input"
+                accept='image/png, image/jpeg'
+                className='file-input'
               />
-              <p className="file-text">
+              <p className='file-text'>
                 Выберите файл или перетащите его сюда <br />
                 JPG или PNG формат
               </p>
-              <button className="file-button">Открыть файл</button>
+              <button className='file-button'>Открыть файл</button>
             </div>
           </label>
         </div>
-        <div className="modal-footer">
-          <button className="modal-submit" onClick={handleSubmit}>
+        <div className='modal-footer'>
+          <button className='modal-submit' onClick={handleSubmit}>
             Добавить
           </button>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AddNewsModal;
+export default AddNewsModal

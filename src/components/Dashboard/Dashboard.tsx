@@ -1,13 +1,13 @@
-import { Card, Row, Col, Typography, Table, Tag, Space, Select, Input } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
-import { useNavigate } from 'react-router-dom';
-import orders from '../../api/data/orders'; // Импорт данных
+import { Card, Row, Col, Typography, Table, Tag, Space, Select, Input } from 'antd'
+import { PlusOutlined } from '@ant-design/icons'
+import { useNavigate } from 'react-router-dom'
+import orders from '../../api/data/orders' // Импорт данных
 
-const { Title } = Typography;
-const { Search } = Input;
+const { Title } = Typography
+const { Search } = Input
 
 const Dashboard = () => {
-  const navigate = useNavigate(); // Хук для навигации
+  const navigate = useNavigate() // Хук для навигации
 
   // Колонки таблицы заказов
   const orderColumns = [
@@ -35,40 +35,28 @@ const Dashboard = () => {
       title: 'Статус',
       dataIndex: 'status',
       key: 'status',
-      render: (status : string) => <Tag color="green">{status}</Tag>,
+      render: (status: string) => <Tag color='green'>{status}</Tag>,
     },
-  ];
+  ]
 
   return (
-    <div >
+    <div>
       {/* Карточки для добавления */}
       <Row gutter={[16, 16]}>
         <Col span={8}>
-          <Card
-            hoverable
-            style={{ textAlign: 'center' }}
-            onClick={() => navigate('/news/create')}
-          >
+          <Card hoverable style={{ textAlign: 'center' }} onClick={() => navigate('/news/create')}>
             <PlusOutlined style={{ fontSize: '36px', color: '#8f9298' }} />
             <Title level={5}>Добавить новость</Title>
           </Card>
         </Col>
         <Col span={8}>
-          <Card
-            hoverable
-            style={{ textAlign: 'center' }}
-            onClick={() => navigate('/products/create')}
-          >
+          <Card hoverable style={{ textAlign: 'center' }} onClick={() => navigate('/products/create')}>
             <PlusOutlined style={{ fontSize: '36px', color: '#8f9298' }} />
             <Title level={5}>Добавить товар</Title>
           </Card>
         </Col>
         <Col span={8}>
-          <Card
-            hoverable
-            style={{ textAlign: 'center' }}
-            onClick={() => navigate('/categories/create')}
-          >
+          <Card hoverable style={{ textAlign: 'center' }} onClick={() => navigate('/categories/create')}>
             <PlusOutlined style={{ fontSize: '36px', color: '#8f9298' }} />
             <Title level={5}>Добавить категорию</Title>
           </Card>
@@ -118,14 +106,14 @@ const Dashboard = () => {
           }}
         >
           <Space>
-            <Select defaultValue="по дате" style={{ width: 120 }}>
-              <Select.Option value="date">по дате</Select.Option>
+            <Select defaultValue='по дате' style={{ width: 120 }}>
+              <Select.Option value='date'>по дате</Select.Option>
             </Select>
-            <Select defaultValue="Получен" style={{ width: 120 }}>
-              <Select.Option value="received">Получен</Select.Option>
+            <Select defaultValue='Получен' style={{ width: 120 }}>
+              <Select.Option value='received'>Получен</Select.Option>
             </Select>
           </Space>
-          <Search placeholder="Найти заказ" style={{ width: 200 }} />
+          <Search placeholder='Найти заказ' style={{ width: 200 }} />
         </Space>
         <Table
           columns={orderColumns}
@@ -134,7 +122,7 @@ const Dashboard = () => {
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Dashboard;
+export default Dashboard

@@ -112,5 +112,3 @@ export const checkoutApi = {
   updateCheckoutById,
   getCheckouts, // <-- Экспортируем новый метод
 }
-
-

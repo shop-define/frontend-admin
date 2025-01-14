@@ -16,9 +16,9 @@ import type { PaymentMethod, DeliveryMethod } from '../../api/data/methods'
 const { Title } = Typography
 
 const UserAccount: React.FC = () => {
-  // 
+  //
   // 1. Настройки (название / лого)
-  // 
+  //
   const { settings, updateSettings } = useSettings()
   const [form] = Form.useForm()
 
@@ -47,31 +47,26 @@ const UserAccount: React.FC = () => {
   const [paymentForm] = Form.useForm()
 
   // При сабмите формы добавления способа оплаты
-// Пример для onAddPaymentMethod
-const onAddPaymentMethod = (values: {
-  title: string
-  description?: string
-  image?: string[]
-}) => {
-  // Если description не задан, ставим пустую строку
-  const descriptionStr = values.description ?? ''
-  // Если image пустой массив, берём ''
-  const imageName = values.image?.[0] || ''
+  // Пример для onAddPaymentMethod
+  const onAddPaymentMethod = (values: { title: string; description?: string; image?: string[] }) => {
+    // Если description не задан, ставим пустую строку
+    const descriptionStr = values.description ?? ''
+    // Если image пустой массив, берём ''
+    const imageName = values.image?.[0] || ''
 
-  methodsApi
-    .createPaymentMethod({
-      title: values.title,
-      description: descriptionStr,
-      image: imageName,
-    })
-    .then(() => {
-      message.success('Способ оплаты добавлен')
-      paymentForm.resetFields()
-      fetchPaymentMethods()
-    })
-    .catch(() => message.error('Ошибка при добавлении способа оплаты'))
-}
-
+    methodsApi
+      .createPaymentMethod({
+        title: values.title,
+        description: descriptionStr,
+        image: imageName,
+      })
+      .then(() => {
+        message.success('Способ оплаты добавлен')
+        paymentForm.resetFields()
+        fetchPaymentMethods()
+      })
+      .catch(() => message.error('Ошибка при добавлении способа оплаты'))
+  }
 
   const handleRemovePayment = (id: string) => {
     methodsApi
@@ -87,8 +82,7 @@ const onAddPaymentMethod = (values: {
     methodsApi
       .getPaymentMethods({ limit: 100 })
       .then((res) => {
-          setPaymentMethods(res)
-        
+        setPaymentMethods(res)
       })
       .catch(() => message.error('Ошибка при загрузке способов оплаты'))
   }
@@ -99,11 +93,7 @@ const onAddPaymentMethod = (values: {
   const [deliveryMethods, setDeliveryMethods] = useState<DeliveryMethod[]>([])
   const [deliveryForm] = Form.useForm()
 
-  const onAddDeliveryMethod = (values: {
-    title: string
-    description?: string
-    image?: string[]
-  }) => {
+  const onAddDeliveryMethod = (values: { title: string; description?: string; image?: string[] }) => {
     const descriptionStr = values.description ?? ''
     const imageName = values.image?.[0] || ''
     methodsApi
@@ -119,7 +109,6 @@ const onAddPaymentMethod = (values: {
       })
       .catch(() => message.error('Ошибка при добавлении способа доставки'))
   }
-  
 
   const handleRemoveDelivery = (id: string) => {
     methodsApi
@@ -135,7 +124,6 @@ const onAddPaymentMethod = (values: {
     methodsApi
       .getDeliveryMethods({ limit: 100 })
       .then((res) => {
-        
         setDeliveryMethods(res)
       })
       .catch(() => message.error('Ошибка при загрузке способов доставки'))
@@ -200,11 +188,7 @@ const onAddPaymentMethod = (values: {
                       {item.description}
                       {item.image && (
                         <div style={{ marginTop: 8 }}>
-                          <img
-                            src={item.image}
-                            alt={item.title}
-                            style={{ width: 60 }}
-                          />
+                          <img src={item.image} alt={item.title} style={{ width: 60 }} />
                         </div>
                       )}
                     </>
@@ -216,11 +200,7 @@ const onAddPaymentMethod = (values: {
           <Divider />
           {/* Форма добавления способа оплаты */}
           <Form form={paymentForm} layout='vertical' onFinish={onAddPaymentMethod}>
-            <Form.Item
-              label='Название'
-              name='title'
-              rules={[{ required: true, message: 'Введите название' }]}
-            >
+            <Form.Item label='Название' name='title' rules={[{ required: true, message: 'Введите название' }]}>
               <Input placeholder='Введите название способа оплаты' />
             </Form.Item>
             <Form.Item label='Описание' name='description'>
@@ -258,11 +238,7 @@ const onAddPaymentMethod = (values: {
                       {item.description}
                       {item.image && (
                         <div style={{ marginTop: 8 }}>
-                          <img
-                            src={item.image}
-                            alt={item.title}
-                            style={{ width: 60 }}
-                          />
+                          <img src={item.image} alt={item.title} style={{ width: 60 }} />
                         </div>
                       )}
                     </>
@@ -274,11 +250,7 @@ const onAddPaymentMethod = (values: {
           <Divider />
           {/* Форма добавления способа доставки */}
           <Form form={deliveryForm} layout='vertical' onFinish={onAddDeliveryMethod}>
-            <Form.Item
-              label='Название'
-              name='title'
-              rules={[{ required: true, message: 'Введите название' }]}
-            >
+            <Form.Item label='Название' name='title' rules={[{ required: true, message: 'Введите название' }]}>
               <Input placeholder='Введите название способа доставки' />
             </Form.Item>
             <Form.Item label='Описание' name='description'>

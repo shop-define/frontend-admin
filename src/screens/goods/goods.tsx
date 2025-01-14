@@ -72,7 +72,7 @@ function Goods() {
             </Flex>
             <Flex gap='large'>
               <Search
-                placeholder='Найти заказ'
+                placeholder='Найти товар'
                 onChange={(e) => setSearchQuery(e.currentTarget.value)}
                 onSearch={handleSearch}
                 style={{ width: 272 }}

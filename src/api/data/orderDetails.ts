@@ -32,6 +32,6 @@ const mockOrderDetails = {
     },
     // Добавьте остальные товары
   ],
-};
+}
 
-export default mockOrderDetails;
+export default mockOrderDetails

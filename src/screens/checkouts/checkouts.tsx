@@ -1,5 +1,5 @@
-import  { useEffect, useState } from 'react'
-import { Table, message, Space, Input, Select, Typography, Tag} from 'antd'
+import { useEffect, useState } from 'react'
+import { Table, message, Space, Input, Select, Typography, Tag } from 'antd'
 import { SearchOutlined } from '@ant-design/icons'
 import { useNavigate } from 'react-router-dom'
 import { checkoutApi } from '../../api/data/checkout.ts'
@@ -42,11 +42,10 @@ function Checkouts() {
         offset: 0,
         sort,
         search: searchQuery,
-        filter: statusFilter, 
+        filter: statusFilter,
       })
 
-      
-      setData(response) 
+      setData(response)
     } catch (err) {
       message.error('Ошибка загрузки заказов')
     } finally {
@@ -57,8 +56,7 @@ function Checkouts() {
   useEffect(() => {
     fetchCheckouts()
     // eslint-disable-next-line
-  }, [sort, searchQuery, statusFilter]) 
-
+  }, [sort, searchQuery, statusFilter])
 
   const statusColorMap: Record<CheckoutItem['status'], string> = {
     created: 'blue',
@@ -108,11 +106,7 @@ function Checkouts() {
       title: 'Статус',
       dataIndex: 'status',
       key: 'status',
-      render: (status: CheckoutItem['status']) => (
-        <Tag color={statusColorMap[status]}>
-          {renderStatusText(status)}
-        </Tag>
-      ),
+      render: (status: CheckoutItem['status']) => <Tag color={statusColorMap[status]}>{renderStatusText(status)}</Tag>,
     },
   ]
 
@@ -151,18 +145,14 @@ function Checkouts() {
   }
 
   return (
-    <div className="ant-pro-card" style={{ padding: '16px', background: '#fff' }}>
+    <div className='ant-pro-card' style={{ padding: '16px', background: '#fff' }}>
       <Title level={2} style={{ marginBottom: '16px' }}>
         Заказы
       </Title>
 
-      <Space
-        style={{ marginBottom: '16px', display: 'flex', justifyContent: 'space-between' }}
-        wrap
-      >
+      <Space style={{ marginBottom: '16px', display: 'flex', justifyContent: 'space-between' }} wrap>
         {/* Панель слева: поиск + сортировка */}
         <Space>
-
           Сортировать:
           <Select
             value={sort}
@@ -175,35 +165,35 @@ function Checkouts() {
               { label: 'Имя (Я-А)', value: 'recipientName_ask' },
             ]}
           />
-          Cтатус: 
+          Cтатус:
           <Select
-          style={{ width: 120 , border: 'none'}}
-          onChange={handleStatusChange}
-          value={statusFilter || 'all'} // если статус не выбран, показываем "all"
-        >
-          <Select.Option value="all">Все</Select.Option>
-          <Select.Option value="created">Создан</Select.Option>
-          <Select.Option value="payed">Оплачен</Select.Option>
-          <Select.Option value="delivery">В доставке</Select.Option>
-          <Select.Option value="delivered">Доставлен</Select.Option>
-          <Select.Option value="success">Завершен</Select.Option>
-          <Select.Option value="canceled">Отменен</Select.Option>
-        </Select>
+            style={{ width: 120, border: 'none' }}
+            onChange={handleStatusChange}
+            value={statusFilter || 'all'} // если статус не выбран, показываем "all"
+          >
+            <Select.Option value='all'>Все</Select.Option>
+            <Select.Option value='created'>Создан</Select.Option>
+            <Select.Option value='payed'>Оплачен</Select.Option>
+            <Select.Option value='delivery'>В доставке</Select.Option>
+            <Select.Option value='delivered'>Доставлен</Select.Option>
+            <Select.Option value='success'>Завершен</Select.Option>
+            <Select.Option value='canceled'>Отменен</Select.Option>
+          </Select>
         </Space>
 
         {/* Панель справа: фильтр по статусу */}
 
         <Search
-            placeholder="Поиск..."
-            onSearch={handleSearch}
-            allowClear
-            enterButton={<SearchOutlined />}
-            style={{ width: 220 }}
-          />
+          placeholder='Найти заказ'
+          onSearch={handleSearch}
+          allowClear
+          enterButton={<SearchOutlined />}
+          style={{ width: 272 }}
+        />
       </Space>
 
       <Table
-        rowKey="id"
+        rowKey='id'
         loading={loading}
         columns={columns}
         dataSource={data}

@@ -124,6 +124,12 @@ function Checkout() {
                     {data?.paymentMethodName}
                   </Text>
                 </Flex>
+                <Flex justify='space-between'>
+                  <Text style={{ fontSize: 16 }}>Способ доставки</Text>
+                  <Text style={{ fontSize: 16 }} type='secondary'>
+                    {data?.deliveryMethodName}
+                  </Text>
+                </Flex>
                 <Text style={{ fontSize: 16 }}>{data?.goodsIdList.length} товаров</Text>
                 <Flex justify='space-between'>
                   <Title level={3} style={{ margin: 0 }}>

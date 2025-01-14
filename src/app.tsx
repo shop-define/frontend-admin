@@ -8,7 +8,6 @@ import Goods from './screens/goods/goods.tsx'
 import Categories from './screens/categories/categories.tsx'
 import './index.css'
 
-import EditProduct from './components/EditProduct/EditProduct'
 import AddNewsModal from './components/AddNewsModal/AddNewsModal'
 import UserAccount from './components/UserAccount/UserAccount'
 
@@ -66,10 +65,6 @@ const router = createBrowserRouter([
       {
         path: '/checkout/:id',
         element: <Checkout />,
-      },
-      {
-        path: '/edit-product/:productId',
-        element: <EditProduct />,
       },
       {
         path: '/news/create',

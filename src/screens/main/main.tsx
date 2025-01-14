@@ -22,7 +22,7 @@ const Dashboard = () => {
   useEffect(() => {
     // Загружаем товары, чтобы узнать их число
     goodsApi
-      .getGoods({ limit: 1, offset: 0 }) 
+      .getGoods({ limit: 1, offset: 0 })
       .then((res) => {
         // Если 'getGoods' возвращает { data: [...], total: number }
         // Можно записать так:
@@ -61,31 +61,19 @@ const Dashboard = () => {
       {/* Карточки для добавления */}
       <Row gutter={[16, 16]}>
         <Col span={8}>
-          <Card
-            hoverable
-            style={{ textAlign: 'center' }}
-            onClick={() => navigate('/news/create')}
-          >
+          <Card hoverable style={{ textAlign: 'center' }} onClick={() => navigate('/news/create')}>
             <PlusOutlined style={{ fontSize: '36px', color: '#8f9298' }} />
             <Title level={5}>Добавить новость</Title>
           </Card>
         </Col>
         <Col span={8}>
-          <Card
-            hoverable
-            style={{ textAlign: 'center' }}
-            onClick={() => navigate('/good/new')}
-          >
+          <Card hoverable style={{ textAlign: 'center' }} onClick={() => navigate('/good/new')}>
             <PlusOutlined style={{ fontSize: '36px', color: '#8f9298' }} />
             <Title level={5}>Добавить товар</Title>
           </Card>
         </Col>
         <Col span={8}>
-          <Card
-            hoverable
-            style={{ textAlign: 'center' }}
-            onClick={() => navigate('/category')}
-          >
+          <Card hoverable style={{ textAlign: 'center' }} onClick={() => navigate('/category')}>
             <PlusOutlined style={{ fontSize: '36px', color: '#8f9298' }} />
             <Title level={5}>Добавить категорию</Title>
           </Card>
@@ -105,9 +93,7 @@ const Dashboard = () => {
             onClick={() => navigate('/good')}
           >
             <Title level={5}>Мои товары</Title>
-            <div style={{ fontSize: '14px', color: '#8f9298' }}>
-              {goodsCount} товаров
-            </div>
+            <div style={{ fontSize: '14px', color: '#8f9298' }}>{goodsCount} товаров</div>
           </Card>
         </Col>
         <Col span={12}>
@@ -121,9 +107,7 @@ const Dashboard = () => {
             onClick={() => navigate('/checkouts')}
           >
             <Title level={5}>Заказы</Title>
-            <div style={{ fontSize: '14px', color: '#8f9298' }}>
-              {checkoutsCount} заказов
-            </div>
+            <div style={{ fontSize: '14px', color: '#8f9298' }}>{checkoutsCount} заказов</div>
           </Card>
         </Col>
       </Row>
