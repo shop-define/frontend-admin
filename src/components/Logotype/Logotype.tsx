@@ -1,13 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useSettings } from '../../helpers/SettingsContext';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { useSettings } from '../../helpers/SettingsContext'
+import { IMAGE_URL } from '../../constants/constants.ts'
 
 interface LogotypeProps {
-  size: 'small' | 'medium';
+  size: 'small' | 'medium'
 }
 
 const Logotype: React.FC<LogotypeProps> = ({ size }) => {
-
   const { settings } = useSettings()
 
   const styles = {
@@ -19,19 +19,19 @@ const Logotype: React.FC<LogotypeProps> = ({ size }) => {
       fontSize: '40px',
       lineHeight: '56px',
     },
-  };
+  }
 
   return (
-    <Link to="/" className="link">
-      <div className="logotype" style={{ display: 'flex', alignItems: 'center' }}>
-      {settings.logo && <img src={settings.logo} alt="Логотип" style={{ height: 50 }} />}
+    <Link to='/' className='link'>
+      <div className='logotype' style={{ display: 'flex', alignItems: 'center' }}>
+        {settings.logo && <img src={`${IMAGE_URL}/${settings.logo}`} alt='Логотип' style={{ height: 50 }} />}
 
-        <p className="logotype__name" style={styles[size]}>
+        <p className='logotype__name' style={styles[size]}>
           {settings.title || 'Мини Маркет'}
         </p>
       </div>
     </Link>
-  );
-};
+  )
+}
 
-export default Logotype;
+export default Logotype
