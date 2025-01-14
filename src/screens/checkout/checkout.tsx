@@ -29,6 +29,7 @@ function Checkout() {
   } as const
   const formattedDate = date?.toLocaleString('ru-RU', options).replace(',', '')
   const formattedUpdateDate = dateUpdate?.toLocaleString('ru-RU', options).replace(',', '')
+  const isAllCancelled = data?.status === 'canceled'
 
   useEffect(() => {
     if (id && id !== 'new') {
@@ -63,7 +64,7 @@ function Checkout() {
   return (
     <>
       {contextHolder}
-      <Form form={form} layout={'vertical'}>
+      <Form form={form} layout={'vertical'} disabled={isAllCancelled}>
         <Flex vertical>
           <Text type='secondary'>id: {id}</Text>
           <Flex justify='space-between' align='flex-end'>
@@ -136,7 +137,7 @@ function Checkout() {
                   style={{ marginTop: 'auto' }}
                   size={'large'}
                   onClick={handleSave}
-                  disabled={isLoading}
+                  disabled={isLoading || isAllCancelled}
                   loading={isLoading}
                 >
                   Сохранить изменения

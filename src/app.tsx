@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
-import { Content, Header, Footer } from 'antd/es/layout/layout'
+import { Content } from 'antd/es/layout/layout'
 import { ConfigProvider, Layout } from 'antd'
 import Main from './screens/main/main.tsx'
 import Good from './screens/good/good.tsx'
@@ -8,9 +8,9 @@ import Goods from './screens/goods/goods.tsx'
 import Categories from './screens/categories/categories.tsx'
 import './index.css'
 
-import EditProduct from './components/EditProduct/EditProduct';
-import AddNewsModal from './components/AddNewsModal/AddNewsModal';
-import UserAccount from './components/UserAccount/UserAccount';
+import EditProduct from './components/EditProduct/EditProduct'
+import AddNewsModal from './components/AddNewsModal/AddNewsModal'
+import UserAccount from './components/UserAccount/UserAccount'
 
 import S from './app.module.css'
 import Checkout from './screens/checkout/checkout.tsx'
@@ -69,26 +69,19 @@ const router = createBrowserRouter([
       },
       {
         path: '/edit-product/:productId',
-        element: 
-          <EditProduct />
+        element: <EditProduct />,
       },
       {
         path: '/news/create',
-        element: (
-            <AddNewsModal />
-        ),
+        element: <AddNewsModal />,
       },
       {
         path: '/profile',
-        element: (
-            <UserAccount />
-        ),
-      }  
+        element: <UserAccount />,
+      },
     ],
   },
 ])
-
-
 
 function App() {
   return (
@@ -108,14 +101,12 @@ function App() {
       }}
     >
       <QueryClientProvider client={queryClient}>
-      <SettingsProvider>
-
-        <RouterProvider router={router} />
-
-      </SettingsProvider>
+        <SettingsProvider>
+          <RouterProvider router={router} />
+        </SettingsProvider>
       </QueryClientProvider>
     </ConfigProvider>
-  );
+  )
 }
 
-export default App;
+export default App
